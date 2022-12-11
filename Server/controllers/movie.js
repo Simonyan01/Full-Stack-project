@@ -1,22 +1,48 @@
 const {validationResult} = require('express-validator');
 const MovieService = require('../services/movie');
-const ApiError = require('../libs/errors/apiError');
 const httpStatusCode = require('../libs/constants/http-Status-Codes');
+const HttpException = require('http-exception');
 
 class MovieController {
-    async getAllMovie(req, res, next){
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return next(ApiError.BadRequestError('validation error', errors.array()));
+    static async getAll(req, res) {
+        try {
+            const data = await MovieService.getAll();
+            res.send(data).status(httpStatusCode.Ok);
+        } catch (err) {
+            res.send(err.message).status(err.status);
         }
-        return MovieService.getAllMovie();
     }
-   async create(req, res, next){
-       const {title, date, age, country, genre, duration, description, language} = req.body;
-       let Movie = await MovieService.create(title, date, age, country, genre, duration, description, language);
-       if (Movie) {
-           res.send(Movie).status(201);
-       }
-   }
+
+    static async create(req, res) {
+        try {
+            const data = await MovieService.create(req.body);
+            res.send(data).status(httpStatusCode.CREATED);
+        }catch (err) {
+            res.send(err.message).status(err.status);
+        }
+    }
+
+    static async getById(req,res){
+        try {
+            const data = await MovieService.getById(req.params.id)
+            if (!data){
+                throw new HttpException(`movie by id ${req.params.id} dose not excist `,404)
+            }
+            res.send(data).status(httpStatusCode.CREATED);
+
+        }catch (err) {
+            res.send(err.message).status(err.status);
+        }
+    }
+    static async remove(req,res){
+        try{
+            await MovieService.remove(req.params.id)
+            res.status(200).send(`user by id ${req.params.id} deleted`)
+        }catch (err){
+            console.log(err.status);
+            res.send(err.message).status(err.status);
+        }
+    }
 }
-export {MovieController};
+
+module.exports = MovieController;

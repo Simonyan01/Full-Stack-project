@@ -1,5 +1,5 @@
 {
-  "name": "movies",
+  "name": "Movies",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "author": "Lyov Simonyan",
+  "author": "Mihran Hakobyan",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.19",

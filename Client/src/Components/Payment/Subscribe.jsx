@@ -41,7 +41,7 @@ export default function Subscibe({ success }) {
     if (!error) {
       const { id } = paymentMethod;
       try {
-        const { data } = await axios.post("http://localhost:3000/subscribe", { id, amount: 1000 });
+        const { data } = await axios.post("http://localhost:8080/api/v1/subscribe", { id, amount: 1000 });
         console.log(data);
         success();
       } catch (error) {

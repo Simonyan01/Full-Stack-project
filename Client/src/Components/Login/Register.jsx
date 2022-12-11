@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -9,83 +9,81 @@ import "./Register.css";
 const USER_REGEX = /^[a-zA-Zа-яА-Я][a-zа-яA-ZА-Я0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-zа-я])(?=.*[A-ZА-Я])(?=.*[0-9])(?=.*[!@#$%?&]).{8,24}/;
 const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}/;
-const REGISTER_URL = "/register"
-
 
 function Register() {
-  const errRef = useRef();
 
-  const [firstName, setFirstName] = useState("")
-  const [validFname, setValidFname] = useState(false)
-  const [fnameFocus, setFnameFocus] = useState(false)
+  const userRef = useRef()
 
-  const [lastName, setLastName] = useState("")
-  const [validLname, setValidLname] = useState(false)
-  const [lnameFocus, setLnameFocus] = useState(false)
-
-  const [email, setEmail] = useState("")
-  const [validEmail, setValidEmail] = useState(false)
-  const [emailFocus, setEmailFocus] = useState(false);
-
-  const [password, setPassword] = useState("")
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
-
-  const [confirm, setConfirm] = useState("")
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
-
+  const [err, setErr] = useState("")
   const [success, setSuccess] = useState(false)
+  const [focus, setFocus] = useState(false)
 
-
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirm: ""
+  })
+  const [validate, setValidate] = useState({
+    fname: false,
+    lname: false,
+    email: false,
+    pwd: false,
+    match: false
+  })
+  const handleChange = (e) => {
+    setForm(e.target.value)
+  }
   // First name
   useEffect(() => {
-    const result = USER_REGEX.test(firstName)
-    setValidFname(result)
-  }, [firstName]);
+    const result = USER_REGEX.test(form.firstName)
+    setValidate(result)
+  }, [form.firstName]);
   // Last Name
   useEffect(() => {
-    const result = USER_REGEX.test(lastName)
-    setValidLname(result)
-  }, [lastName]);
+    const result = USER_REGEX.test(form.lastName)
+    setValidate(result)
+  }, [form.lastName]);
   //Email
   useEffect(() => {
-    const result = EMAIL_REGEX.test(email)
-    setValidEmail(result)
-  }, [email]);
+    const result = EMAIL_REGEX.test(form.email)
+    setValidate(result)
+  }, [form.email]);
   // Password
   useEffect(() => {
-    const result = PWD_REGEX.test(password)
-    setValidPwd(result)
-    const match = password === confirm
-    setValidMatch(match)
-  }, [password, confirm]);
+    const result = PWD_REGEX.test(form.password)
+    setValidate(result)
+    const match = form.password === form.confirm
+    setValidate(match)
+  }, [form.password, form.confirm]);
 
-  const [getUserData, setUserData] = useState([]);
+  useEffect(() => {
+    userRef.current.focus();
+  }, [])
 
-  async function handleSubmit(e) {
-    e.preventDeafalt();
-    const response = await fetch("http://localhost:8080/sign-in", {
+  const [userData, setUserData] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const response = await fetch("http://localhost:8080/api/v1/auth/sign-in", {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true,
       body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        password,
-        confirm
+        ...form
       })
     })
+    setSuccess(true);
     const data = await response.json()
-    if (response.status === 200) {
+    if (response.status === 201) {
       setUserData(data);
     } else {
       console.log(data.message);
     }
   }
-  useEffect(() => {
-    handleSubmit();
-  });
   return (
     <>
       {success ? (
@@ -97,92 +95,61 @@ function Register() {
         <section className="register-main">
           <div className="contaIner">
             <h2 className="text">Регистрация</h2>
-            <form method="post" onSubmit={handleSubmit} id="page">
+            <form onSubmit={handleSubmit} id="page">
               <div className="input-container">
-                <span className={validFname ? "valid" : "hide"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span className={validFname || !firstName ? "hide" : "invalid"}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
                 <input
                   className="input-username"
                   id="username"
                   type="text"
+                  ref={userRef}
                   placeholder="Имя"
                   autoComplete="off"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  aria-invalid={validFname ? "false" : "true"}
-                  onBlur={() => setFnameFocus(false)}
-                  onFocus={() => setFnameFocus(true)}
+                  value={form.firstName}
+                  onChange={handleChange}
                 />
-                <span className={validLname ? "valid" : "hide"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span className={validLname || !lastName ? "hide" : "invalid"}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
                 <input
                   className="input-lastname"
                   id="lastname"
                   type="text"
+                  ref={userRef}
                   placeholder="Фамилия"
                   autoComplete="off"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  aria-invalid={validLname ? "false" : "true"}
-                  onBlur={() => setLnameFocus(false)}
-                  onFocus={() => setLnameFocus(true)}
+                  value={form.lastName}
+                  onChange={handleChange}
                 />
-                <span className={validEmail ? "valid" : "hide"}>
-                  <FontAwesomeIcon icon={faCheck} />
-                </span>
-                <span className={validEmail || !email ? "hide" : "invalid"}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
                 <input
                   className="input-email"
                   id="email"
                   type="email"
+                  ref={userRef}
                   placeholder="Электронная почта"
                   autoComplete="off"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onBlur={() => setEmailFocus(false)}
-                  onFocus={() => setEmailFocus(true)}
+                  value={form.email}
+                  onChange={handleChange}
                 />
-                <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                <FontAwesomeIcon icon={faTimes} className={validPwd || !password ? "hide" : "invalid"} />
                 <input
                   className="input-password"
                   id="password"
                   type="password"
+                  ref={userRef}
                   placeholder="Пароль"
                   autoComplete="off"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  aria-invalid={validPwd ? "false" : "true"}
-                  onBlur={() => setPwdFocus(false)}
-                  onFocus={() => setPwdFocus(true)}
+                  value={form.password}
+                  onChange={handleChange}
                 />
-                <FontAwesomeIcon icon={faCheck} className={validMatch && confirm ? "valid" : "hide"} />
-                <FontAwesomeIcon icon={faTimes} className={validMatch || !confirm ? "hide" : "invalid"} />
                 <input
                   className="input-reset-pwd"
                   id="confirm_pwd"
                   type="password"
+                  ref={userRef}
                   placeholder="Потвердить пароль"
                   autoComplete="off"
-                  value={confirm}
-                  onChange={(e) => setConfirm(e.target.value)}
-                  aria-invalid={validMatch ? "false" : "true"}
-                  onBlur={() => setMatchFocus(false)}
-                  onFocus={() => setMatchFocus(true)}
+                  value={form.confirm}
+                  onChange={handleChange}
                 />
               </div>
               <div className="button-container">
-                <button className="login-button" disabled={!validFname || !validLname || !validEmail || !validPwd || !validMatch ? true : false}>Зарегистрироваться</button>
+                <button className="login-button">Зарегистрироваться</button>
               </div>
               <Link to="/login">
                 <h4 className="button-of-register">УЖЕ ЗАРЕГИСТРИРОВАН?</h4>

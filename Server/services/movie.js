@@ -1,11 +1,17 @@
-const Movie = require('../models/movie');
+const Movie=require('../models/movie')
 
-async function getAllMovie(){
-    return Movie.findAll()
+class MovieService{
+  static async getAll(){
+        return Movie.findAll()
+    }
+    static async create(payload){
+     await Movie.create(payload)
+    }
+    static async getById(id){
+      return Movie.findByPk(id)
+    }
+    static async remove(id){
+        return Movie.findByPk(id)
+    }
 }
-async function create(title, date, age, country, genre, duration, description, language){
-  const hey= await Movie.findOne({where:{title,date,duration}})
-    console.log(hey);
-   return Movie.create({title, date, age, country, genre, duration, description, language})
-}
-export {getAllMovie,create}
+module.exports=MovieService

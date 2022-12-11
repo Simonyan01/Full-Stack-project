@@ -8,6 +8,7 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
+
             title: {
                 allowNull: false,
                 type: Sequelize.STRING
@@ -40,8 +41,10 @@ module.exports = {
             language: {
                 allowNull: false,
                 type: Sequelize.STRING,
-            }
+            },
+
         });
+
     },
     async down(queryInterface, Sequelize) {
         await queryInterface.dropTable('movies');
