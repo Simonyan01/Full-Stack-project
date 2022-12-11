@@ -1,5 +1,5 @@
 {
-  "name": "Movies",
+  "name": "movies",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "author": "Mihran Hakobyan",
+  "author": "Lyov Simonyan",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.19",
@@ -16,6 +16,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "cros": "^1.0.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
