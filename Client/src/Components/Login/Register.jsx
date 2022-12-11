@@ -76,10 +76,10 @@ function Register() {
         ...form
       })
     })
-    setSuccess(true);
     const data = await response.json()
     if (response.status === 201) {
       setUserData(data);
+      setSuccess(true);
     } else {
       console.log(data.message);
     }

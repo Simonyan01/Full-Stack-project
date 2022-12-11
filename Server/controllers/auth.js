@@ -15,7 +15,7 @@ async function register(req, res, next) {
         await AuthService.register(firstName,lastName ,email, password, confirm);
 
         res.status(httpStatusCode.CREATED).json({
-            message: 'registration seccess'
+            message: 'Registration success'
         });
     } catch (err) {
         next(err);
