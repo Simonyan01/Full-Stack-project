@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.swiper {
+    position: relative;
+    top: 4rem;
+    background-size: contain;
+    width: 1500px;
+    height: 800px;
+    border-radius: 30px;
+}
+
+.swiper img {
+    display: inline-block;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width:1350px) {
+    .swiper {
+        position: relative;
+        top: 2rem;
+        background-size: cover;
+        width: 1300px;
+        height: 800px;
+        border-radius: 30px;
+    }
+
+    .swiper img {
+        height: 800px;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .swiper {
+        position: relative;
+        top: 9.7rem;
+        background-size: contain;
+        width: 1100px;
+        height: 700px;
+        object-fit: cover;
+        border-radius: 30px;
+    }
+
+    .swiper img {
+        height: 700px;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .swiper {
+        position: relative;
+        top: 10.2rem;
+        background-size: contain;
+        width: 900px;
+        height: 600px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .swiper img {
+        height: 600px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .swiper {
+        position: relative;
+        top: 11.4rem;
+        background-size: contain;
+        width: 800px;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .swiper img {
+        height: 500px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .swiper {
+        position: relative;
+        top: 12rem;
+        background-size: contain;
+        width: 670px;
+        height: 500px;
+        border-radius: 20px;
+    }
+
+    .swiper img {
+        height: 500px;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .swiper {
+        position: relative;
+        top: 10rem;
+        background-size: contain;
+        width: 600px;
+        height: 380px;
+        border-radius: 20px;
+    }
+
+    .swiper img {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .swiper {
+        position: relative;
+        top: 11rem;
+        background-size: contain;
+        width: 430px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .swiper img {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .swiper {
+        position: relative;
+        top: 8rem;
+        background-size: contain;
+        width: 300px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .swiper img {
+        height: 250px;
+    }
+}

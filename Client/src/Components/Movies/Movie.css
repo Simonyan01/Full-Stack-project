@@ -1,0 +1,521 @@
+.movie-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    top: 6rem;
+}
+
+.second-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 12rem;
+}
+
+.third-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 18rem;
+}
+
+.fourth-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 24rem;
+}
+
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 3.4rem;
+    cursor: pointer;
+}
+
+.img-wrapper .movie {
+    background-size: contain;
+    border-radius: 10px;
+    margin: 18.4px;
+    width: 12rem;
+    height: 16rem;
+    transition: all .4s ease;
+    border: none;
+}
+
+.img-wrapper .content {
+    position: absolute;
+    font-size: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 12.4px;
+    border-radius: 12px;
+    transition: 300ms ease;
+    inset: 0;
+    width: 12rem;
+    height: 16rem;
+}
+
+.img-wrapper:hover .movie.blur {
+    filter: blur(3px);
+}
+
+.img-wrapper .content.fade {
+    opacity: 0;
+}
+
+.img-wrapper:hover .content.fade {
+    opacity: 1;
+    width: 12.8rem;
+    height: 16.6rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #decc67;
+}
+
+.arrowAndLink {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #d9d9da;
+    font-size: x-large;
+    font-weight: 600;
+    transition: all .3s ease-in-out;
+}
+
+.arrowAndLink:hover {
+    transform: scale(1.05);
+}
+
+.title {
+    position: relative;
+    left: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    font-size: 1.1rem;
+    color: #d9d9da;
+}
+
+.adviceText {
+    position: relative;
+    top: 24.5rem;
+    right: 32.5rem;
+}
+
+.modernText {
+    position: relative;
+    top: 55.5rem;
+    right: 33.3rem;
+}
+
+.newFilmText {
+    position: relative;
+    top: 86.4rem;
+    right: 37rem;
+}
+
+.dramaText {
+    position: relative;
+    top: 117.1rem;
+    right: 41rem;
+}
+
+.subscribe {
+    background-image: linear-gradient(to right, crimson 0%, #FFEDBC 50%, crimson 100%);
+    padding: 0.5rem;
+    margin-top: 7rem;
+    margin-left: 10rem;
+    border-radius: 10px;
+    color: black;
+    width: 80rem;
+    display: inline-block;
+    transition: 0.5s;
+    background-size: 350% auto;
+    box-shadow: 0 0 13px #ED4264;
+    text-align: center;
+}
+
+.subscribe:hover {
+    background-position: right center;
+    color: #fff;
+    text-shadow: 0 0 15px #000000;
+}
+
+.subscribeText {
+    font-size: 21px;
+    outline-color: none;
+    font-weight: 600;
+    position: relative;
+    bottom: 0.4rem;
+    letter-spacing: 0.4px;
+    left: 0.7rem;
+}
+
+@media screen and (max-width:1350px) {
+    .adviceText {
+        position: relative;
+        top: 21.7rem;
+        right: 24.5rem;
+    }
+
+    .modernText {
+        position: relative;
+        top: 51.5rem;
+        right: 25.1rem;
+    }
+
+    .newFilmText {
+        position: relative;
+        top: 81.5rem;
+        right: 29rem;
+    }
+
+    .dramaText {
+        position: relative;
+        top: 111.2rem;
+        right: 33rem;
+    }
+
+    .img-wrapper .movie {
+        width: 11rem;
+        height: 15rem;
+    }
+
+    .img-wrapper:hover .content.fade {
+        width: 11.7rem;
+        height: 15.7rem;
+    }
+
+    .subscribe {
+        margin-top: 4rem;
+        margin-left: 4rem;
+        width: 75rem;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .adviceText {
+        right: 19.6rem;
+    }
+
+    .modernText {
+        right: 20.3rem;
+    }
+
+    .newFilmText {
+        right: 24rem;
+    }
+
+    .dramaText {
+        right: 27.8rem;
+    }
+
+    .img-wrapper .movie {
+        width: 11rem;
+        height: 15rem;
+    }
+
+    .subscribe {
+        position: relative;
+        top: 1.5rem;
+        margin-top: 4rem;
+        margin-left: 4rem;
+        width: 64rem;
+    }
+
+    .subscribeText {
+        position: relative;
+        bottom: 0.5rem;
+        letter-spacing: 0.4px;
+        left: 2.5rem;
+    }
+
+    .lightningImage {
+        position: relative;
+        left: 2.4rem;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .adviceText {
+        right: 13.8rem;
+    }
+
+    .modernText {
+        right: 14.5rem;
+    }
+
+    .newFilmText {
+        right: 18.5rem;
+    }
+
+    .dramaText {
+        right: 22.3rem;
+    }
+
+    .img-wrapper .movie {
+        width: 11rem;
+        height: 15rem;
+    }
+
+    .img-wrapper:hover .content.fade {
+        width: 11.7rem;
+        height: 15.7rem;
+    }
+
+    .subscribe {
+        position: relative;
+        top: 2.5rem;
+        margin-top: 4rem;
+        margin-left: 5rem;
+        width: 51rem;
+    }
+
+    .subscribeText {
+        position: relative;
+        bottom: 0.5rem;
+        letter-spacing: 0.4px;
+        left: 2.5rem;
+    }
+
+}
+
+@media screen and (max-width:950px) {
+    .adviceText {
+        display: none;
+    }
+
+    .modernText {
+        display: none;
+    }
+
+    .newFilmText {
+        display: none;
+    }
+
+    .dramaText {
+        display: none;
+    }
+
+    .subscribe {
+        position: relative;
+        top: 3rem;
+        margin-top: 12rem;
+        margin-left: 7rem;
+        width: 45rem;
+    }
+
+    .img-wrapper .movie {
+        width: 10rem;
+        height: 14rem;
+    }
+
+    .img-wrapper .content {
+        width: 11rem;
+        height: 15rem;
+    }
+
+    .img-wrapper:hover .content.fade {
+        width: 10.7rem;
+        height: 14.7rem;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .img-wrapper {
+        position: relative;
+        left: 3rem;
+    }
+
+    .img-wrapper .content {
+        width: 11rem;
+        height: 15rem;
+    }
+
+    .img-wrapper:hover .content.fade {
+        width: 10.7rem;
+        height: 14.7rem;
+    }
+
+    .subscribe {
+        position: relative;
+        top: 6rem;
+        margin-top: 8rem;
+        margin-left: 3.5rem;
+        width: 45rem;
+    }
+
+    .subscribeText {
+        position: relative;
+        bottom: 0.5rem;
+        letter-spacing: 0.4px;
+        left: 2rem;
+    }
+
+    .lightningImage {
+        position: relative;
+        left: 2rem;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    .img-wrapper .movie {
+        width: 10rem;
+        height: 14rem;
+    }
+
+
+    .subscribe {
+        position: relative;
+        top: 5rem;
+        padding: 0.3rem;
+        margin-top: 12rem;
+        margin-left: 3.5rem;
+        width: 38rem;
+    }
+
+    .subscribeText {
+        position: relative;
+        bottom: 0.5rem;
+        letter-spacing: 0.4px;
+        left: 1.5rem;
+        font-size: 19px;
+    }
+
+    .lightningImage {
+        position: relative;
+        left: 1.2rem;
+    }
+}
+
+@media screen and (max-width:625px) {
+    .img-wrapper {
+        position: relative;
+        left: 1rem;
+    }
+
+    .subscribe {
+        margin-top: 12rem;
+        margin-left: 3.5rem;
+        width: 30rem;
+    }
+
+    .subscribeText {
+        position: relative;
+        bottom: 0.5rem;
+        letter-spacing: 0.4px;
+        left: 1.6rem;
+        font-size: 16px;
+    }
+
+    .lightningImage {
+        position: relative;
+        left: 1.2rem;
+    }
+}
+
+@media screen and (max-width:560px) {
+    .subscribe {
+        position: relative;
+        top: 6.5rem;
+        width: 80vw;
+    }
+
+    .title {
+        position: relative;
+        left: 7.5rem;
+    }
+
+    .img-wrapper .movie {
+        position: relative;
+        left: 6rem;
+        width: 12rem;
+        height: 18rem;
+    }
+
+    .img-wrapper .content {
+        left: 6rem;
+        width: 13rem;
+        height: 18.4rem;
+    }
+
+    .img-wrapper:hover .content.fade {
+        width: 12.7rem;
+        height: 18.6rem;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .title {
+        left: 3.8rem;
+        letter-spacing: 3px;
+    }
+
+    .img-wrapper .movie {
+        position: relative;
+        left: 2.4rem;
+        width: 12rem;
+        height: 18rem;
+    }
+
+    .img-wrapper .content {
+        left: 2.4rem;
+        width: 13rem;
+        height: 18.4rem;
+    }
+
+    .img-wrapper:hover .content.fade {
+        width: 12.7rem;
+        height: 18.6rem;
+    }
+
+    .subscribe {
+        padding: 0.5rem;
+        margin-top: 8rem;
+        margin-left: 3.7rem;
+        width: 20rem;
+    }
+
+    .subscribeText {
+        position: relative;
+        bottom: 0.5rem;
+        letter-spacing: 0.4px;
+        left: 0.5rem;
+        font-size: 18px;
+    }
+
+    .lightningImage {
+        position: relative;
+        left: 0.3rem;
+    }
+}
+
+@media screen and (max-width:410px) {
+    .title {
+        left: 0.5rem;
+        letter-spacing: 3px;
+    }
+
+    .img-wrapper .movie {
+        position: relative;
+        top: 1rem;
+        left: -1rem;
+    }
+
+    .img-wrapper .content {
+        left: -1rem;
+        top: 1rem;
+    }
+
+    .subscribe {
+        display: none;
+    }
+}
