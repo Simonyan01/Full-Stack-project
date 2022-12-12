@@ -26,27 +26,17 @@ const Header = () => {
           </a>
           <ul className={isMoblie ? "nav-items-moblie" : "nav-items"}>
             <li>
-              <Link to="/Coming" className="coming">
-                Что нового
+              <Link to="/" className="home">
+                Мой Иви
               </Link>
             </li>
             <li>
-              <Link to="/Movies" className="film">
+              <Link to="/movies" className="film">
                 Фильмы
               </Link>
             </li>
             <li>
-              <Link to="/Serials" className="serial">
-                Сериалы
-              </Link>
-            </li>
-            <li>
-              <Link to="/Multfilms" className="multfilm">
-                Мультфильмы
-              </Link>
-            </li>
-            <li>
-              <Link to="/Login" className="log-btn">
+              <Link to="/login" className="log-btn">
                 Войти
               </Link>
             </li>

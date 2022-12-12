@@ -8,14 +8,14 @@ async function register(req, res, next) {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            return next(ApiError.BadRequestError('validation error', errors.array()));
+            return next(ApiError.BadRequestError('Validation Error', errors.array()));
         }
 
         const {firstName,lastName, email, password,confirm} = req.body;
         await AuthService.register(firstName,lastName ,email, password, confirm);
 
         res.status(httpStatusCode.CREATED).json({
-            message: 'Registration success'
+            message: 'Registration Success'
         });
     } catch (err) {
         next(err);

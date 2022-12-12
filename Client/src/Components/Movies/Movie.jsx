@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoIosArrowForward } from "@react-icons/all-files/io/IoIosArrowForward";
-import { Movies } from "./data";
+import { movies } from "./data";
 // import Loading from "../Loading/Load";
 import "./Movie.css";
 import { Link } from "react-router-dom";
@@ -103,13 +103,13 @@ function createImage() {
   return (
     <>
       <Slider {...settings}>
-        {Movies.map((item, key) => {
+        {movies.map((item, key) => {
           return <div key={key}>
             <div className="img-wrapper">
               <img src={item.img} className="movie blur" alt="Movie pictures" />
               <Link to={`${item.id}`}>
                 <div className="content fade">
-                  {item.text} <br />
+                  {item.year} <br />
                   {item.category} <br />
                   {item.time}
                 </div>
@@ -124,25 +124,28 @@ function createImage() {
 }
 
 const Movie = () => {
-  // const [loading, setLoading] = useState(false);
+  const [getUserData, setUserData] = useState([]);
+  const getData = async (e) => {
+
+    const res = await fetch('http://localhost:8080/api/v1/movie', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    const data = await res.json();
+    if (res.status === 200) {
+      setUserData(data);
+    } else {
+      console.log(data.message);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
-      {/* {
-        loading ? (
-          <Loading loading={loading} setLoading={setLoading} />
-        ) : ( */}
       <div id="ivi">
-        <a href="/" className="adviceText">
-          <span className="arrowAndLink" href="/"> Рекомендуем вам посмотреть<IoIosArrowForward /></span>
-        </a>
-        <a href="/" className="modernText">
-          <span className="arrowAndLink" href="/"> Современные мультфильмы <IoIosArrowForward /></span>
-        </a>
-        <a href="/" className="newFilmText">
-          <span className="arrowAndLink" href="/"> Фильмы-новинки <IoIosArrowForward /></span>
-        </a>
-        <a href="/" className="dramaText">
-          <span className="arrowAndLink" href="/"> Драмы <IoIosArrowForward /> </span>
+        <a href="/movies" className="adviceText">
+          <span className="arrow" href="/"> Рекомендуем вам посмотреть<IoIosArrowForward /></span>
         </a>
         <Link to="/subscribe" className="subscribe">
           <img
@@ -155,17 +158,7 @@ const Movie = () => {
         <div className="movie-container">
           {createImage()}
         </div>
-        <div className="second-container">
-          {createImage()}
-        </div>
-        <div className="third-container">
-          {createImage()}
-        </div>
-        <div className="fourth-container">
-          {createImage()}
-        </div>
       </div>
-      {/* )} */}
     </>
   );
 };

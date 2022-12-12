@@ -3,10 +3,9 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import "../../main";
-import axios from '../../api/axios';
 import AuthContext from "../../context/AuthProvider"
 
-const LOGIN_URL = '/auth';
+const LOGIN_URL = 'http://localhost:8080/api/v1/auth';
 
 function LoginPage() {
   const data = {
@@ -23,7 +22,6 @@ function LoginPage() {
   const [err, setErr] = useState('')
   const [success, setSuccess] = useState(false)
 
-
   useEffect(() => {
     setErr('')
   }, [form, form.name, form.password]);
@@ -31,42 +29,34 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     userRef.current.focus()
-    try {
 
-      const response = await axios.post(LOGIN_URL,
-        JSON.stringify({ ...form }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
-        }
-      );
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
-      setAuth({ ...form, roles, accessToken });
-      setForm({ ...form, name: "", password: "" })
-      setSuccess(true);
-    } catch (err) {
-      if (!err?.response) {
-        setErr('No Server Response');
-      } else if (err.response?.status === 400) {
-        setErr('Missing Username or Password');
-      } else if (err.response?.status === 401) {
-        setErr('Unauthorized');
-      } else {
-        setErr('Login Failed');
+    const response = await fetch(LOGIN_URL,
+      JSON.stringify({ ...form }),
+      {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
       }
-      errRef.current.focus();
+    );
+    const accessToken = response.data.accessToken;
+    const roles = response.data.roles;
+    setAuth({ ...form, roles, accessToken });
+    setForm({ ...form, name: "", password: "" })
+    setSuccess(true);
+    if (!err.response) {
+      setErr('No Server Response');
+    } else if (err.response?.status === 400) {
+      setErr('Missing Username or Password');
+    } else if (err.response?.status === 401) {
+      setErr('Unauthorized');
+    } else {
+      setErr('Login Failed');
     }
+    errRef.current.focus();
   }
 
   return (
     <>
       {success ? (
-        <section>
-          <h1>You are logged in</h1>
-          <Link to="/">Home</Link>
-        </section>
-      ) : (
         <div className="login-main">
           <section className="container">
             <form onSubmit={handleSubmit} className="page">
@@ -105,6 +95,11 @@ function LoginPage() {
             </form>
           </section>
         </div>
+      ) : (
+        <section>
+          <h1>Registration failed</h1>
+          <Link to="/register">Try again</Link>
+        </section>
       )}
     </>
   );

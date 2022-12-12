@@ -1,26 +1,16 @@
-.first_container {
+.film-container {
     display: flex;
-    justify-content: left;
-    position: relative;
-    right: 3.5rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
-.second_container {
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.third_container {
-    display: flex;
-    justify-content: right;
-    position: relative;
-    left: 3.5rem;
+.items {
+    width: 25%;
 }
 
 .search-container {
     margin-top: 3rem;
-    margin-left: 5rem;
+    margin-left: 30rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,16 +63,15 @@
     position: absolute;
     color: #ffffff;
     background-color: transparent;
-    pointer-events: painted;
+    pointer-events: none;
 }
 
 .btn-search:focus {
-    padding-left: 32rem;
-    transition: all 400ms cubic-bezier(0, 0.110, 0.35, 2);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+    background-color: transparent;
 }
 
 .btn-search:focus~.search {
-    width: 600px;
     border-radius: 18px;
     background-color: transparent;
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);

@@ -8,10 +8,10 @@ const ApiError = require('../libs/errors/apiError');
 async function register(firstName, lastName, email, password, confirm) {
     const candidate = await User.findUserByEmail(email);
     if (candidate) {
-        throw  ApiError.BadRequestError(`User with ${email} address already excist`);
+        throw  ApiError.BadRequestError(`User with ${email} address already exist`);
     }
     if (password !== confirm) {
-        throw  ApiError.BadRequestError(`password different`);
+        throw  ApiError.BadRequestError(`Password different`);
     }
         const heshPassword = await bcrypt.hash(password, 5);
 
