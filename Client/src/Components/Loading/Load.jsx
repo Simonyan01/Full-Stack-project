@@ -13,7 +13,7 @@ function Loading({ loading, setLoading }) {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000);
   }, [setLoading]);
 
   return (

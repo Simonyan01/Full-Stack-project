@@ -31,12 +31,12 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    gap: 70px;
+    gap: 85px;
 }
 
-.film, .serial, .coming, .multfilm {
+.film, .home {
     position: relative;
-    right: 40rem;
+    right: 55rem;
     color: rgb(148, 140, 140);
     font-size: 1.1rem;
     cursor: pointer;
@@ -50,18 +50,9 @@
 
 }
 
-.coming:hover {
+.home:hover {
     color: rgb(218, 222, 225);
 }
-
-.serial:hover {
-    color: rgb(218, 222, 225);
-}
-
-.multfilm:hover {
-    color: rgb(218, 222, 225);
-}
-
 
 .log-btn {
     position: relative;
@@ -83,29 +74,9 @@
     border-radius: 0.7rem;
 }
 
-/* 
-.register-btn {
-    position: relative;
-    left: 4rem;
-    background: #0f0f0f;
-    color: rgb(218, 222, 225);
-    font-weight: 400;
-    border-radius: .5rem;
-    transition: .4s;
-    padding: 9px 25px;
-}
-
-.register-btn:hover {
-    background: rgb(218, 222, 225);
-    color: #0f0f0f;
-    font-weight: 500;
-    border-radius: .5rem;
-} */
-
 .hamburger {
     display: none;
 }
-
 
 .watchSubscribe {
     position: relative;
@@ -165,7 +136,7 @@
     }
 
     .menu-container {
-        background-color: #090313e0;    
+        background-color: #090313e0;
     }
 
     .nav-items {
@@ -194,7 +165,7 @@
         right: 1.5rem;
     }
 
-    .coming {
+    .home {
         position: relative;
         left: 35rem;
         bottom: 1rem;
@@ -210,28 +181,6 @@
         position: relative;
         left: 35rem;
         top: 0.4rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
-    }
-
-    .serial {
-        position: relative;
-        left: 35rem;
-        top: 1.7rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
-    }
-
-    .multfilm {
-        position: relative;
-        left: 35rem;
-        top: 3rem;
         color: rgb(148, 140, 140);
         align-items: center;
         width: 100%;
@@ -275,7 +224,7 @@
         display: none;
     }
 
-    .coming {
+    .home {
         position: relative;
         left: 27rem;
         bottom: 1rem;
@@ -299,29 +248,6 @@
         transition: all .4s ease-in;
     }
 
-    .serial {
-        position: relative;
-        left: 27rem;
-        top: 2rem;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
-    }
-
-    .multfilm {
-        position: relative;
-        left: 27rem;
-        top: 3.4rem;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
-    }
 }
 
 @media screen and (max-width:900px) {
@@ -355,7 +281,7 @@
         display: none;
     }
 
-    .coming {
+    .home {
         position: relative;
         left: 23rem;
         bottom: 0;
@@ -379,29 +305,6 @@
         transition: all .4s ease-in;
     }
 
-    .serial {
-        position: relative;
-        left: 23rem;
-        top: 3rem;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
-    }
-
-    .multfilm {
-        position: relative;
-        left: 23rem;
-        top: 4.5rem;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
-    }
 }
 
 @media screen and (max-width:768px) {
@@ -435,7 +338,7 @@
         display: none;
     }
 
-    .coming {
+    .home {
         position: relative;
         left: 20rem;
         bottom: -0.50rem;
@@ -457,27 +360,6 @@
         transition: all .4s ease-in;
     }
 
-    .serial {
-        position: relative;
-        left: 20rem;
-        top: 3.5rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
-    }
-
-    .multfilm {
-        position: relative;
-        left: 20rem;
-        top: 5rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
-    }
 }
 
 @media screen and (max-width:650px) {
@@ -511,7 +393,7 @@
         display: none;
     }
 
-    .coming {
+    .home {
         position: relative;
         left: 15rem;
         bottom: 0.2rem;
@@ -533,27 +415,6 @@
         transition: all .4s ease-in;
     }
 
-    .serial {
-        position: relative;
-        left: 15rem;
-        top: 2.2rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: large;
-        transition: all .4s ease-in;
-    }
-
-    .multfilm {
-        position: relative;
-        left: 15rem;
-        top: 3.6rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: large;
-        transition: all .4s ease-in;
-    }
 }
 
 @media screen and (max-width:480px) {
@@ -586,7 +447,7 @@
         display: none;
     }
 
-    .coming {
+    .home {
         position: relative;
         left: 12rem;
         top: 0.3rem;
@@ -608,27 +469,6 @@
         transition: all .4s ease-in;
     }
 
-    .serial {
-        position: relative;
-        left: 12rem;
-        top: 3rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: medium;
-        transition: all .4s ease-in;
-    }
-
-    .multfilm {
-        position: relative;
-        left: 12rem;
-        top: 4.2rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: medium;
-        transition: all .4s ease-in;
-    }
 }
 
 @media screen and (max-width:350px) {
@@ -672,18 +512,7 @@
         transition: all .4s ease-in;
     }
 
-    .serial {
-        position: relative;
-        left: 8rem;
-        top: 1.4rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: small;
-        transition: all .4s ease-in;
-    }
-
-    .coming {
+    .home {
         position: relative;
         left: 8rem;
         top: 0.20rem;
@@ -694,14 +523,4 @@
         transition: all .4s ease-in;
     }
 
-    .multfilm {
-        position: relative;
-        left: 8rem;
-        top: 2.2rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: small;
-        transition: all .4s ease-in;
-    }
 }

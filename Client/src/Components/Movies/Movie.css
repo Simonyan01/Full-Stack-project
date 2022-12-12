@@ -6,30 +6,6 @@
     top: 6rem;
 }
 
-.second-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    top: 12rem;
-}
-
-.third-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    top: 18rem;
-}
-
-.fourth-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    top: 24rem;
-}
-
 .img-wrapper {
     position: relative;
     overflow: hidden;
@@ -80,18 +56,13 @@
     color: #decc67;
 }
 
-.arrowAndLink {
+.arrow {
     justify-content: center;
     align-items: center;
     display: flex;
     color: #d9d9da;
     font-size: x-large;
     font-weight: 600;
-    transition: all .3s ease-in-out;
-}
-
-.arrowAndLink:hover {
-    transform: scale(1.05);
 }
 
 .title {
@@ -104,27 +75,10 @@
 }
 
 .adviceText {
+    cursor: pointer;
     position: relative;
-    top: 24.5rem;
+    top: 19rem;
     right: 32.5rem;
-}
-
-.modernText {
-    position: relative;
-    top: 55.5rem;
-    right: 33.3rem;
-}
-
-.newFilmText {
-    position: relative;
-    top: 86.4rem;
-    right: 37rem;
-}
-
-.dramaText {
-    position: relative;
-    top: 117.1rem;
-    right: 41rem;
 }
 
 .subscribe {

@@ -1,10 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Register.css";
+import axios from "../../api/axios";
+
+const REGISTER_URL = "http://localhost:8080/api/v1/auth/sign-in"
 
 const USER_REGEX = /^[a-zA-Zа-яА-Я][a-zа-яA-ZА-Я0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-zа-я])(?=.*[A-ZА-Я])(?=.*[0-9])(?=.*[!@#$%?&]).{8,24}/;
@@ -14,10 +16,7 @@ function Register() {
 
   const userRef = useRef()
 
-  const [err, setErr] = useState("")
   const [success, setSuccess] = useState(false)
-  const [focus, setFocus] = useState(false)
-
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -25,51 +24,53 @@ function Register() {
     password: "",
     confirm: ""
   })
-  const [validate, setValidate] = useState({
-    fname: false,
-    lname: false,
-    email: false,
-    pwd: false,
-    match: false
-  })
-  const handleChange = (e) => {
-    setForm(e.target.value)
-  }
-  // First name
-  useEffect(() => {
-    const result = USER_REGEX.test(form.firstName)
-    setValidate(result)
-  }, [form.firstName]);
-  // Last Name
-  useEffect(() => {
-    const result = USER_REGEX.test(form.lastName)
-    setValidate(result)
-  }, [form.lastName]);
-  //Email
-  useEffect(() => {
-    const result = EMAIL_REGEX.test(form.email)
-    setValidate(result)
-  }, [form.email]);
-  // Password
-  useEffect(() => {
-    const result = PWD_REGEX.test(form.password)
-    setValidate(result)
-    const match = form.password === form.confirm
-    setValidate(match)
-  }, [form.password, form.confirm]);
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, [])
+  const handleChange = (value, key) => {
+    setForm({ ...form, [key]: value })
+  }
+
+  // const [validate, setValidate] = useState({
+  //   fname: false,
+  //   lname: false,
+  //   email: false,
+  //   pwd: false,
+  //   match: false
+  // })
+  
+  // // First name
+  // useEffect(() => {
+  //   const result = USER_REGEX.test(form.firstName)
+  //   setValidate(result)
+  // }, [form.firstName]);
+  // // Last Name
+  // useEffect(() => {
+  //   const result = USER_REGEX.test(form.lastName)
+  //   setValidate(result)
+  // }, [form.lastName]);
+  // //Email
+  // useEffect(() => {
+  //   const result = EMAIL_REGEX.test(form.email)
+  //   setValidate(result)
+  // }, [form.email]);
+  // // Password
+  // useEffect(() => {
+  //   const result = PWD_REGEX.test(form.password)
+  //   setValidate(result)
+  //   const match = form.password === form.confirm
+  //   setValidate(match)
+  // }, [form.password, form.confirm]);
 
   const [userData, setUserData] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch("http://localhost:8080/api/v1/auth/sign-in", {
+    userRef.current.focus()
+
+    const response = await fetch(REGISTER_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        withCredentials: true
       },
       withCredentials: true,
       body: JSON.stringify({
@@ -84,13 +85,11 @@ function Register() {
       console.log(data.message);
     }
   }
+
   return (
     <>
       {success ? (
-        <section>
-          <h1>You are logged in</h1>
-          <p><Link to="/">Sign in</Link></p>
-        </section>
+        <Link to="/">Sign in</Link>
       ) : (
         <section className="register-main">
           <div className="contaIner">
@@ -105,7 +104,7 @@ function Register() {
                   placeholder="Имя"
                   autoComplete="off"
                   value={form.firstName}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange(e.target.value, "firstName")}
                 />
                 <input
                   className="input-lastname"
@@ -115,7 +114,7 @@ function Register() {
                   placeholder="Фамилия"
                   autoComplete="off"
                   value={form.lastName}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange(e.target.value, "lastName")}
                 />
                 <input
                   className="input-email"
@@ -125,7 +124,7 @@ function Register() {
                   placeholder="Электронная почта"
                   autoComplete="off"
                   value={form.email}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange(e.target.value, "email")}
                 />
                 <input
                   className="input-password"
@@ -135,7 +134,7 @@ function Register() {
                   placeholder="Пароль"
                   autoComplete="off"
                   value={form.password}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange(e.target.value, "password")}
                 />
                 <input
                   className="input-reset-pwd"
@@ -145,7 +144,7 @@ function Register() {
                   placeholder="Потвердить пароль"
                   autoComplete="off"
                   value={form.confirm}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange(e.target.value, "confirm")}
                 />
               </div>
               <div className="button-container">
