@@ -33,11 +33,11 @@ export const data = [
     },
     {
         id: 5,
-        img: "https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/dff4515a-286f-4288-b1cb-43bed18c0080/600x900",
-        year: "2013 г.",
-        category: "Триллер/Криминал",
-        time: "1 ч 55 мин",
-        title: "Иллюзия обмана"
+        img: "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/731c4031-7389-44f4-8c15-f9f4e3b0ed90/600x900",
+        year: "2021 г.",
+        category: "Боевик/Фэнтези",
+        time: "2 ч 28 мин",
+        title: "Человек Паук:Нет пути домой"
     },
     {
         id: 6,
