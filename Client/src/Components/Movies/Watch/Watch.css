@@ -11,18 +11,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .params-2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
     font-size: 20px;
 }
 
 .all-items {
+    margin-top: 55px;
     color: aliceblue;
 }
 
@@ -30,6 +31,7 @@
     font-weight: 700;
     font-size: 50px;
 }
+
 
 .item-date {
     font-weight: 400;
@@ -76,8 +78,42 @@
 
 .item-img {
     width: 450px;
-    height: 600px;
+    height: 550px;
     border: 4px solid black;
     border-radius: 20px;
     box-shadow: 15px grey;
 }
+
+.item-button {
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    background: crimson;
+    color: #ffffff;
+    width: 16em;
+    font-size: large;
+    font-weight: 650;
+    transition: .5s ease;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    border: none;
+    outline-color: none;
+}
+
+.item-button:hover {
+    color: #040404;
+    font-weight: 700;
+    transform: scale(1.1);
+}
+
+.frame {
+    position: relative;
+    right: 40rem;
+    top: 4rem;
+    border: none;
+    box-shadow: 0 0 27px grey;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    opacity: 1;
+    transition: all .5s ease-in-out;
+}
+

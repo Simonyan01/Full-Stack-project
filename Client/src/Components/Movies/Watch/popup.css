@@ -1,0 +1,15 @@
+.close {
+    position: relative;
+    bottom: 17.6rem;
+    right: 5rem;
+    background: #130e29;
+    transition: all .3s ease;
+    border: none;
+    transform: scale(1.3);
+    color: aliceblue;
+}
+
+.close:hover {
+    cursor: pointer;
+    transform: scale(1.7);
+}
