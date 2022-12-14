@@ -5,27 +5,29 @@ import "./Login.css";
 import "../../main";
 import AuthContext from "../../context/AuthProvider"
 
-const LOGIN_URL = 'http://localhost:8080/api/v1/auth';
+const LOGIN_URL = 'http://localhost:8080/api/v1/auth/login';
 
 function LoginPage() {
   const data = {
-    name: "",
+    email: "",
     password: "",
   }
 
   const userRef = useRef();
   const errRef = useRef();
-  const { setAuth } = useContext(AuthContext)
 
-  // const [loading, setLoading] = useState(false);
+  const { setAuth } = useContext(AuthContext)
   const [form, setForm] = useState(data);
-  const [err, setErr] = useState('')
+  const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    setErr('')
-  }, [form, form.name, form.password]);
+    setError('')
+  }, [form, form.email, form.password]);
 
+  const handleChange = (value, key) => {
+    setForm({ ...form, [key]: value })
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     userRef.current.focus()
@@ -40,16 +42,16 @@ function LoginPage() {
     const accessToken = response.data.accessToken;
     const roles = response.data.roles;
     setAuth({ ...form, roles, accessToken });
-    setForm({ ...form, name: "", password: "" })
+    setForm({ ...form, email: "", password: "" })
     setSuccess(true);
-    if (!err.response) {
-      setErr('No Server Response');
-    } else if (err.response?.status === 400) {
-      setErr('Missing Username or Password');
-    } else if (err.response?.status === 401) {
-      setErr('Unauthorized');
+    if (!error.response) {
+      setError('No Server Response');
+    } else if (error.response?.status === 400) {
+      setError('Missing Email or Password');
+    } else if (error.response?.status === 401) {
+      setError('Unauthorized');
     } else {
-      setErr('Login Failed');
+      setError('Login Failed');
     }
     errRef.current.focus();
   }
@@ -63,14 +65,14 @@ function LoginPage() {
               <h2 className="other_text">Здравствуй</h2>
               <div className="Input-container">
                 <input
-                  className="Input-username"
-                  id="username"
+                  className="Input-email"
+                  id="email"
                   ref={userRef}
-                  type="text"
-                  placeholder="Логин"
-                  autoComplete="off"
-                  onChange={(e) => setForm(e.target.value)}
-                  value={form.name}
+                  type="email"
+                  placeholder="Электронная почта"
+                  autoComplete="on"
+                  onChange={(e) => handleChange(e.target.value, "email")}
+                  value={form.email}
                   required
                 />
                 <input
@@ -80,7 +82,7 @@ function LoginPage() {
                   type="password"
                   placeholder="Пароль"
                   autoComplete="off"
-                  onChange={(e) => setForm(e.target.value)}
+                  onChange={(e) => handleChange(e.target.value, "password")}
                   value={form.password}
                   required
                 />
