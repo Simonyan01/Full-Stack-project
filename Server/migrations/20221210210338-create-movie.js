@@ -8,7 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-
+      btnText: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       title: {
         allowNull: false,
         type: Sequelize.STRING
@@ -24,7 +27,6 @@ module.exports = {
       country: {
         allowNull: false,
         type: Sequelize.STRING,
-
       },
       genre: {
         allowNull: false,
@@ -37,10 +39,6 @@ module.exports = {
       description: {
         allowNull: false,
         type: Sequelize.STRING
-      },
-      language: {
-        allowNull: false,
-        type: Sequelize.STRING,
       },
       createdAt: {
         type: Sequelize.DATE,

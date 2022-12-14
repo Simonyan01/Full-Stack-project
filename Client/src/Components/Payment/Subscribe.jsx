@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import "./Subscribe.css"
+import Finality from "./Finality";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -25,56 +26,67 @@ const CARD_OPTIONS = {
     }
   }
 }
+const SUBSCRIBE_URL = "http://localhost:8080/api/v1/subscribe"
 
 export default function Subscibe() {
   const stripe = useStripe();
   const elements = useElements();
-
+  const [success, setSuccess] = useState(false)
   const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //   if (!stripe || !elements) {
-  //     return;
-  //   }
-  //   setIsProcessing(true);
+    if (!stripe || !elements) {
+      return;
+    }
+    setIsProcessing(true);
 
-  //   const { error, paymentMethod } = await stripe.confirmPayment({
-  
-  //     type: "card",
-  //     card: elements.getElement(CardElement)
-  //   });
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement),
+    });
 
-  //   // if (!error) {
-  //   //   const { id } = paymentMethod;
-  //   //   const { data } = await fetch("http://localhost:8080/api/v1/subscribe", { id, amount: 1000 });
-  //   //   console.log(data);
-  //   //   success(data);
-  //   // } else if (error.type === "card_error" || error.type === "validation_error") {
-  //   //   setMessage(error.message);
-  //   // } else {
-  //   //   setMessage("An unexpected error occured.");
-  //   // }
-  //   setIsProcessing(false);
-  // };
-
+    if (!error) {
+      const { id } = paymentMethod;
+      const response = await fetch(SUBSCRIBE_URL, JSON.stringify({
+        id,
+        amount: 1000
+      }),
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true
+        }
+      );
+      console.log(response);
+      if (response.data.success) {
+        console.log("Successful Payment");
+        setSuccess(response);
+      }
+    } else if (error.type === "card_error" || error.type === "validation_error") {
+      setMessage(error.message);
+    } else {
+      setMessage("Произошла непредвиденная ошибка.");
+    }
+    setIsProcessing(false);
+  }
 
   return (
     <>
-      <form className='card-container' >
-        <fieldset className='FormGroup'>
-          <div className='FormRow'>
-            <CardElement options={CARD_OPTIONS} />
-          </div>
-        </fieldset>
-        <button disabled={isProcessing || !stripe || !elements} className='button'>Оплатить за подписку</button>
-        <span id="button-text">
-          {isProcessing ? "Обработка... " : "Заплатить сейчас"}
-        </span>
-        {message && <div id="payment-message">{message}</div>}
-      </form>
+      {!success ?
+        <form onSubmit={handleSubmit} className='card-container'>
+          <fieldset className='FormGroup'>
+            <div className='FormRow'>
+              <CardElement options={CARD_OPTIONS} />
+            </div>
+          </fieldset>
+          <button disabled={isProcessing || !stripe || !elements} className='button'> {isProcessing ? "Обработка..." : "Заплатить сейчас"}</button>
+          {message && <div id="payment-message">{message}</div>}
+        </form>
+        : <Finality />
+      }
     </>
   )
-};
+
+}

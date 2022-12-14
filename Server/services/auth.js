@@ -11,7 +11,7 @@ async function register(firstName, lastName, email, password, confirm) {
         throw  ApiError.BadRequestError(`User with ${email} address already exist`);
     }
     if (password !== confirm) {
-        throw  ApiError.BadRequestError(`Password different`);
+        throw  ApiError.BadRequestError(`Another password`);
     }
         const heshPassword = await bcrypt.hash(password, 5);
 
@@ -23,7 +23,7 @@ async function login(email, password) {
 
     const user = await User.findUserByEmail(email);
     if (!user) {
-        throw ApiError.BadRequestError(`user with this email ${email} not found`);
+        throw ApiError.BadRequestError(`User with this email ${email} not found`);
     }
 
     const isPasswordEquals = await bcrypt.compare(password, user.password);
