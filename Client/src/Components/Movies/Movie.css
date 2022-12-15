@@ -119,24 +119,6 @@
         right: 24.5rem;
     }
 
-    .modernText {
-        position: relative;
-        top: 51.5rem;
-        right: 25.1rem;
-    }
-
-    .newFilmText {
-        position: relative;
-        top: 81.5rem;
-        right: 29rem;
-    }
-
-    .dramaText {
-        position: relative;
-        top: 111.2rem;
-        right: 33rem;
-    }
-
     .img-wrapper .movie {
         width: 11rem;
         height: 15rem;
@@ -157,18 +139,6 @@
 @media screen and (max-width:1200px) {
     .adviceText {
         right: 19.6rem;
-    }
-
-    .modernText {
-        right: 20.3rem;
-    }
-
-    .newFilmText {
-        right: 24rem;
-    }
-
-    .dramaText {
-        right: 27.8rem;
     }
 
     .img-wrapper .movie {
@@ -202,18 +172,6 @@
         right: 13.8rem;
     }
 
-    .modernText {
-        right: 14.5rem;
-    }
-
-    .newFilmText {
-        right: 18.5rem;
-    }
-
-    .dramaText {
-        right: 22.3rem;
-    }
-
     .img-wrapper .movie {
         width: 11rem;
         height: 15rem;
@@ -243,18 +201,6 @@
 
 @media screen and (max-width:950px) {
     .adviceText {
-        display: none;
-    }
-
-    .modernText {
-        display: none;
-    }
-
-    .newFilmText {
-        display: none;
-    }
-
-    .dramaText {
         display: none;
     }
 

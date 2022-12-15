@@ -28,6 +28,7 @@ const CARD_OPTIONS = {
 }
 const SUBSCRIBE_URL = "http://localhost:8080/api/v1/subscribe"
 
+
 export default function Subscibe() {
   const stripe = useStripe();
   const elements = useElements();
@@ -43,33 +44,30 @@ export default function Subscibe() {
     }
     setIsProcessing(true);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
-    });
+    // const { error, paymentMethod } = await stripe.createPaymentMethod({
+    //   type: "card",
+    //   card: elements.getElement(CardElement),
+    // });
 
-    if (!error) {
-      const { id } = paymentMethod;
-      const response = await fetch(SUBSCRIBE_URL, JSON.stringify({
-        id,
-        amount: 1000
-      }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
-        }
-      );
-      console.log(response);
-      if (response.data.success) {
-        console.log("Successful Payment");
-        setSuccess(response);
+    // if (!error) {
+    // const { id } = paymentMethod;
+    const response = await fetch(SUBSCRIBE_URL,
+      {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
       }
-    } else if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("Произошла непредвиденная ошибка.");
+    );
+    console.log(response);
+    if (response.data.success) {
+      console.log("Successful Payment");
+      setSuccess(response);
     }
-    setIsProcessing(false);
+    //   } else if (error.type === "card_error" || error.type === "validation_error") {
+    //     setMessage(error.message);
+    //   } else {
+    //     setMessage("Произошла непредвиденная ошибка.");
+    //   }
+    //   setIsProcessing(false);
   }
 
   return (
@@ -78,7 +76,10 @@ export default function Subscibe() {
         <form onSubmit={handleSubmit} className='card-container'>
           <fieldset className='FormGroup'>
             <div className='FormRow'>
-              <CardElement options={CARD_OPTIONS} />
+              <CardElement
+                options={CARD_OPTIONS}
+                STRIPE_PUBLIC_KEY="pk_test_51MD0P0HTl6hKCtntLLQh99iPJGvf7GGMVPszwVFrJ7xRV60YwLPUJIekhqv3vjhVW44k2CgxtvBpd8oGR4OI3FNT00IvQBPMsT"
+              />
             </div>
           </fieldset>
           <button disabled={isProcessing || !stripe || !elements} className='button'> {isProcessing ? "Обработка..." : "Заплатить сейчас"}</button>
