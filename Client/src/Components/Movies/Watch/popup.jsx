@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaTimes } from "react-icons/fa";
-import "./Popup.css"
+import "./popup.css"
 
 function Popup(props) {
     return (props.trigger) ? (

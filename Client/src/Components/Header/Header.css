@@ -101,29 +101,22 @@
     transform: scale(1.1);
 }
 
-@media screen and (max-width:1350px) {
+@media screen and (max-width:1360px) {
     .logo {
-        display: flex;
         position: absolute;
         top: 5px;
-        left: 40rem;
-        transition: .4s ease-in;
+        left: 1rem;
     }
 
-    .menu-container {
-        background-color: #090313e0;
+    .film, .home {
+        position: relative;
+        right: 45rem;
     }
 
-    .nav-items {
-        display: none;
-    }
-
-    .nav-items-moblie {
-        display: none;
-    }
-
-    .log-btn {
-        display: none;
+    .watchSubscribe {
+        position: relative;
+        top: 0;
+        left: 56rem;
     }
 }
 
@@ -135,21 +128,12 @@
         left: 10px;
     }
 
-    .menu-container {
-        background-color: #090313e0;
-    }
-
-    .nav-items {
-        display: none;
-    }
-
     .nav-items-moblie {
         position: absolute;
         display: block;
         background-color: #090313e0;
         left: 0;
         top: 69px;
-        transition: all .4s ease-in-out;
         height: 145px;
         width: 150%;
     }
@@ -169,26 +153,22 @@
         position: relative;
         left: 35rem;
         bottom: 1rem;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
     }
 
     .film {
         position: relative;
-        left: 35rem;
+        left: 35.1rem;
         top: 0.4rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
     }
 
+
     .log-btn {
+        position: relative;
+        top: 2.5rem;
+        left: 34.3rem;
+    }
+
+    .watchSubscribe {
         display: none;
     }
 }
@@ -220,34 +200,24 @@
         right: 1.5rem;
     }
 
-    .log-btn {
-        display: none;
-    }
 
     .home {
         position: relative;
         left: 27rem;
         bottom: 1rem;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
     }
 
     .film {
         position: relative;
         left: 27rem;
-        top: 0.50rem;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
-        font-size: larger;
-        transition: all .4s ease-in;
+        top: 1rem;
     }
 
+    .log-btn {
+        position: relative;
+        left: 26.2rem;
+        top: 3.2rem;
+    }
 }
 
 @media screen and (max-width:900px) {
@@ -261,7 +231,6 @@
         display: block;
         background-color: #090313e0;
         top: 4.3rem;
-        transition: all .4s ease-out;
         height: 10.5rem;
         width: 150%;
     }
@@ -277,34 +246,25 @@
         right: 1.5rem;
     }
 
-    .log-btn {
-        display: none;
-    }
-
     .home {
         position: relative;
         left: 23rem;
         bottom: 0;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
         font-size: larger;
-        transition: all .4s ease-in;
     }
 
     .film {
         position: relative;
-        left: 23rem;
+        left: 23.1rem;
         top: 1.5rem;
-        color: rgb(148, 140, 140);
-        ;
-        align-items: center;
-        width: 100%;
         font-size: larger;
-        transition: all .4s ease-in;
     }
 
+    .log-btn {
+        position: relative;
+        left: 22.4rem;
+        top: 3.7rem;
+    }
 }
 
 @media screen and (max-width:768px) {
@@ -318,7 +278,6 @@
         display: block;
         background-color: #090313e0;
         top: 4.3rem;
-        transition: all .4s ease-in;
         height: 11rem;
         width: 150%;
     }
@@ -334,32 +293,26 @@
         right: 1.5rem;
     }
 
-    .log-btn {
-        display: none;
-    }
 
     .home {
         position: relative;
         left: 20rem;
-        bottom: -0.50rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
+        top: 1rem;
         font-size: larger;
-        transition: all .4s ease-in;
     }
 
     .film {
         position: relative;
         left: 20rem;
-        top: 2rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
+        top: 3rem;
         font-size: larger;
-        transition: all .4s ease-in;
     }
 
+    .log-btn {
+        position: relative;
+        left: 19.4rem;
+        top: 5.2rem;
+    }
 }
 
 @media screen and (max-width:650px) {
@@ -373,7 +326,7 @@
         display: block;
         background-color: #090313e0;
         top: 4.3rem;
-        transition: all .4s ease-in;
+
         height: 9.3rem;
         width: 150%;
     }
@@ -389,32 +342,25 @@
         right: 1.5rem;
     }
 
-    .log-btn {
-        display: none;
-    }
-
     .home {
         position: relative;
-        left: 15rem;
-        bottom: 0.2rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
+        left: 17rem;
+        top: 0;
         font-size: large;
-        transition: all .4s ease-in;
     }
 
     .film {
         position: relative;
-        left: 15rem;
-        top: 1rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
+        left: 17rem;
+        top: 1.7rem;
         font-size: large;
-        transition: all .4s ease-in;
     }
 
+    .log-btn {
+        position: relative;
+        left: 16.4rem;
+        top: 3.8rem;
+    }
 }
 
 @media screen and (max-width:480px) {
@@ -428,7 +374,6 @@
         display: block;
         background-color: #090313e0;
         top: 4.3rem;
-        transition: all .4s ease-in;
         height: 9.8rem;
         width: 150%;
     }
@@ -443,32 +388,27 @@
         right: 1.5rem;
     }
 
-    .log-btn {
-        display: none;
-    }
 
     .home {
         position: relative;
         left: 12rem;
-        top: 0.3rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
+        top: 0.5rem;
         font-size: medium;
-        transition: all .4s ease-in;
     }
 
     .film {
         position: relative;
         left: 12rem;
-        top: 1.7rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
+        top: 2rem;
         font-size: medium;
-        transition: all .4s ease-in;
     }
 
+    .log-btn {
+        position: relative;
+        left: 10.9rem;
+        top: 4.2rem;
+        font-size: medium;
+    }
 }
 
 @media screen and (max-width:350px) {
@@ -481,7 +421,6 @@
         display: block;
         background-color: #090313e0;
         top: 4rem;
-        transition: all .4s ease-in;
         height: 7.5rem;
         width: 150%;
     }
@@ -497,30 +436,26 @@
         right: 1.5rem;
     }
 
-    .log-btn {
-        display: none;
-    }
-
     .film {
         position: relative;
         left: 8rem;
-        top: 0.8rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
+        top: 0.95rem;
         font-size: small;
-        transition: all .4s ease-in;
     }
 
     .home {
         position: relative;
         left: 8rem;
         top: 0.20rem;
-        color: rgb(148, 140, 140);
-        align-items: center;
-        width: 100%;
         font-size: small;
-        transition: all .4s ease-in;
+    }
+
+    .log-btn {
+        position: relative;
+        left: 7.2rem;
+        top: 2.2rem;
+        font-size: small;
+        padding: 6px 15px;
     }
 
 }

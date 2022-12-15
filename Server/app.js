@@ -16,7 +16,6 @@ app.use(errorMiddleware);
 //BASE URL
 app.use('/api/v1/', routes);
 
-
 async function start() {
     try {
         app.listen(PORT, async () => {

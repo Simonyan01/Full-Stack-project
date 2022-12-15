@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    max-height: 80%;
+    max-height: 70%;
     background: rgba(178, 178, 179, 0.779);
     box-shadow: 0 5px 65px rgba(133, 125, 125, 0.62);
     backdrop-filter: blur(5px);
@@ -33,7 +33,7 @@
     align-items: center;
 }
 
-.Input-username {
+.Input-email {
     background: rgba(255, 255, 255, 0);
     box-shadow: 0 5px 55px rgb(93, 90, 90);
     border-radius: 2rem;
@@ -47,7 +47,7 @@
     margin: 1.5rem;
 }
 
-.Input-username:focus {
+.Input-email:focus {
     display: inline-block;
     backdrop-filter: blur(10rem);
     border-radius: 2rem;
@@ -55,11 +55,11 @@
     background: rgb(167, 164, 164)
 }
 
-.Input-username::placeholder {
+.Input-email::placeholder {
     letter-spacing: 1.3px;
 }
 
-.Input-username:hover {
+.Input-email:hover {
     outline-color: none;
 }
 
@@ -115,7 +115,7 @@ hr {
 .register-button {
     position: relative;
     font-size: 1rem;
-    left:12rem;
+    left: 12rem;
     top: 7.5rem;
     cursor: pointer;
     color: rgb(28, 26, 26);
@@ -178,6 +178,37 @@ hr {
         width: 80vw;
         height: 90vh;
     }
+
+    .container {
+        width: 50vw;
+        height: 90vh;
+    }
+
+    .Input-email {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .Input-password {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .login-btn {
+        position: relative;
+        top: 35px;
+    }
+
+    .register-button {
+        position: relative;
+        top: 75px;
+    }
+
+    hr {
+        display: none
+    }
 }
 
 @media only screen and (min-width: 360px) {
@@ -185,33 +216,199 @@ hr {
         width: 80vw;
         height: 90vh;
     }
-}
 
-@media only screen and (min-width: 411px) {
     .container {
-        width: 80vw;
+        width: 50vw;
         height: 90vh;
+    }
+
+    .Input-email {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .Input-password {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .login-btn {
+        position: relative;
+        top: 35px;
+    }
+
+    .register-button {
+        position: relative;
+        top: 75px;
     }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 451px) {
     .container {
-        width: 80vw;
-        height: 80vh;
+        width: 50vw;
+        height: 90vh;
+    }
+
+    .Input-email {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .Input-password {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .login-btn {
+        position: relative;
+        top: 35px;
+    }
+
+    .register-button {
+        position: relative;
+        top: 75px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .other_text {
+        width: 40vw;
+        font-size: medium;
+    }
+
+    .login-btn {
+        width: 40vw;
+    }
+
+    .Input-email::placeholder {
+        white-space: nowrap;
+    }
+
+    .register-button {
+        position: relative;
+        left: 11rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 50vw;
+        height: 90vh;
+    }
+
+    .Input-email {
+        position: relative;
+        bottom: 15px;
+        width: 45vw;
+    }
+
+    .Input-password {
+        position: relative;
+        bottom: 15px;
+        width: 45vw;
+    }
+
+    .login-btn {
+        position: relative;
+        top: 35px;
+    }
+
+    .register-button {
+        position: relative;
+        top: 75px;
     }
 }
 
 @media only screen and (min-width: 1024px) {
     .container {
-        width: 70vw;
+        width: 50vw;
         height: 90vh;
     }
 
+    .Input-email {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .Input-password {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .login-btn {
+        position: relative;
+        top: 35px;
+    }
+
+    .register-button {
+        position: relative;
+        top: 75px;
+    }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1200px) {
     .container {
         width: 30vw;
         height: 80vh;
     }
+
+    .Input-email {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .Input-password {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .login-btn {
+        position: relative;
+        top: 35px;
+    }
+
+    .register-button {
+        position: relative;
+        top: 75px;
+    }
+}
+
+@media only screen and (min-width: 1360px) {
+    .container {
+        width: 30vw;
+        height: 100vh;
+        position: relative;
+        bottom: 0;
+    }
+
+    .Input-email {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .Input-password {
+        position: relative;
+        bottom: 15px;
+        width: 60%;
+    }
+
+    .login-btn {
+        position: relative;
+        top: 35px;
+    }
+
+    .register-button {
+        position: relative;
+        top: 75px;
+    }
+
 }

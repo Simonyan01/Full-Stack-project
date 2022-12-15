@@ -40,9 +40,6 @@ const Header = () => {
                 Войти
               </Link>
             </li>
-            {/* <Link to="/Register" className="register-btn">
-              Регистрация
-            </Link> */}
           </ul>
           <div className="hamburger" onClick={toggleHamburger}>
             <Hamburger />

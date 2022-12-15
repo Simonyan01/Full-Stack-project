@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { watchData } from "./watchData";
 import "./Watch.css";
-import Popup from "./Popup";
+import Popup from "./popup";
 import { useParams } from 'react-router-dom';
 
 const Watch = () => {
