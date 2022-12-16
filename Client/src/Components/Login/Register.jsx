@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Register.css";
-import axios from "../../api/axios";
 
 const REGISTER_URL = "http://localhost:8080/api/v1/auth/sign-in"
 
@@ -36,7 +35,7 @@ function Register() {
   //   pwd: false,
   //   match: false
   // })
-  
+
   // // First name
   // useEffect(() => {
   //   const result = USER_REGEX.test(form.firstName)
@@ -79,6 +78,7 @@ function Register() {
     })
     const data = await response.json()
     if (response.status === 201) {
+      console.log(data);
       setUserData(data);
       setSuccess(true);
     } else {
@@ -89,7 +89,7 @@ function Register() {
   return (
     <>
       {success ? (
-        <Link to="/">Sign in</Link>
+        <Link to="/login">Sign in</Link>
       ) : (
         <section className="register-main">
           <div className="contaIner">

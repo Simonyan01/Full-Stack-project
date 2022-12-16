@@ -127,20 +127,21 @@ const Movie = () => {
   const [getUserData, setUserData] = useState([]);
   const getData = async (e) => {
 
-    const res = await fetch('http://localhost:8080/api/v1/movie', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    });
-    const data = await res.json();
-    if (res.status === 200) {
-      setUserData(data);
-    } else {
-      console.log(data.message);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+    //   const res = await fetch('http://localhost:8080/api/v1/movie', {
+    //     method: 'GET',
+    //     headers: { 'Content-Type': 'application/json' }
+    //   });
+    //   const data = await res.json();
+    //   if (res.status === 200) {
+    //     setUserData(data);
+    //   } else {
+    //     console.log(data.message);
+    //   }
+    // };
+    // useEffect(() => {
+    //   getData();
+    // }, []);
+  }
   return (
     <>
       <div id="ivi">
