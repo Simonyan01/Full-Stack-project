@@ -69,9 +69,7 @@ function Register() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        withCredentials: true
       },
-      withCredentials: true,
       body: JSON.stringify({
         ...form
       })

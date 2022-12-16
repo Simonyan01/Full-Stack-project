@@ -26,6 +26,7 @@ function LoginPage() {
     setError('')
   }, [user, user.email, user.password]);
 
+  const { email, password } = user
   const handleChange = (value, key) => {
     setUser({ ...user, [key]: value })
   }
@@ -33,31 +34,28 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     userRef.current.focus()
+    const body = { email, password }
     const response = await fetch(LOGIN_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        withCredentials: true,
       },
-      body: JSON.stringify({
-        ...data
-      }),
+      body: JSON.stringify(body),
 
     })
-    if (response.status === 201) {
-      console.log(data);
-      setAuth(data)
+    const res = await response.json()
+    if (res.token) {
+     localStorage.setItem("token",res.token)
+      setAuth(true)
       setUser(data);
       setSuccess(true);
-    } else {
-      console.log("ERROR");
-    }
+    } 
     errRef.current.focus();
   }
 
   return (
     <>
-      {!success ? <div>
+      {success ? <div>
         <h1>Приятного просмотра</h1>
         <Link to="/">Домой</Link>
       </div> : (
@@ -73,7 +71,7 @@ function LoginPage() {
                   ref={userRef}
                   type="email"
                   placeholder="Электронная почта"
-                  autoComplete="on"
+                  autoComplete="off"
                   onChange={(e) => handleChange(e.target.value, "email")}
                   value={user.email}
                   required
