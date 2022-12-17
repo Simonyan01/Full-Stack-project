@@ -16,7 +16,7 @@ const Watch = () => {
 
         <section >
             <div className='watch_container'>
-                <img src={selectedMovie.img} alt="scream" className='item-img' />
+                <img src={selectedMovie.img} alt="movies" className='item-img' />
                 <div className="all-items">
                     <span className='item-title'>{selectedMovie.title}</span><br />
                     <ul className='params-1'>
@@ -37,8 +37,7 @@ const Watch = () => {
                             height="315"
                             src={selectedMovie.link}
                             title="YouTube video player"
-                            frameborder="0"
-                            allow="autoplay">
+                            frameborder="0">
                         </iframe>
                     </Popup>
                 </div>

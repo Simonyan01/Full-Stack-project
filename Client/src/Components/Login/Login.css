@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .login-main {
-    background-image: url("../ProductSwiper/Images/Joker.jpg");
+    background-image: url("./bg-img/Joker.jpg");
     background-position: 50%;
     background-size: cover;
     align-items: center;
@@ -19,7 +19,7 @@
     max-height: 80%;
     background: rgba(178, 178, 179, 0.779);
     box-shadow: 0 5px 65px rgba(133, 125, 125, 0.62);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(4px);
     border-radius: 12px;
     color: #ffffff;
     text-transform: uppercase;
@@ -93,16 +93,6 @@
     outline-color: none;
 }
 
-hr {
-    position: relative;
-    left: 10.7rem;
-    top: 4rem;
-    width: 14rem;
-    color: #434343;
-    transition: .4s ease-in;
-    cursor: default;
-}
-
 .other_text {
     background: linear-gradient(to right, #434343 0%, black 100%);
     margin: 3rem 10rem;
@@ -173,12 +163,21 @@ hr {
     border-radius: 10px;
 }
 
-@media only screen and (min-width: 320px) {
-    .container {
-        width: 80vw;
-        height: 90vh;
-    }
+.loginText {
+    position: fixed;
+    top: 35%;
+    left: 38%;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 500;
+    cursor: default;
+    animation-duration: 2s;
+    background: -webkit-linear-gradient(#1A2980 0%, #26D0CE 50%, #1A2980 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
+@media only screen and (min-width: 320px) {
     .container {
         width: 50vw;
         height: 90vh;
@@ -204,10 +203,6 @@ hr {
     .register-button {
         position: relative;
         top: 75px;
-    }
-
-    hr {
-        display: none
     }
 }
 

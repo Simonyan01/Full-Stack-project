@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import "./Movies.css";
 import { Link } from 'react-router-dom';
 import { data } from "./data";
+import "./movies.css";
 
 
 const Movies = () => {
