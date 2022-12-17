@@ -23,14 +23,15 @@
 }
 
 .all-items {
-    margin-top: 55px;
+    position: relative;
+    bottom: 2rem;
     color: aliceblue;
     cursor: default;
 }
 
 .item-title {
     font-weight: 700;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 
@@ -43,10 +44,7 @@
 }
 
 .item-description {
-    overflow: hidden;
-    height: 50px;
     line-height: 30px;
-    text-overflow: hidden;
 }
 
 .item-description:before {
@@ -79,7 +77,7 @@
 
 .item-img {
     width: 450px;
-    height: 500px;
+    height: 450px;
     border-radius: 25px;
     box-shadow: 0 0 55px rgb(53, 41, 120);
     cursor: pointer;
@@ -113,7 +111,7 @@
 
 .frame {
     position: relative;
-    right: 40rem;
+    right: 35rem;
     top: 5rem;
     border: none;
     box-shadow: 0 0 30px #152a53;

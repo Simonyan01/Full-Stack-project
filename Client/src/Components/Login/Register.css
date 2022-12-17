@@ -7,7 +7,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 105vh;
     width: 100%;
     font-family: "Raleway", sans-serif;
 }
@@ -16,9 +16,10 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    min-height: 95vh;
     background: rgba(169, 169, 173, 0.779);
     box-shadow: 0 5px 65px rgba(133, 125, 125, 0.62);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(4px);
     border-radius: 12px;
     color: #ffffff;
     text-transform: uppercase;
@@ -142,7 +143,7 @@ input:hover {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 21%;
+    height: 20%;
     width: 90%;
 }
 
@@ -184,7 +185,7 @@ input:hover {
     font-family: cursive;
     font-size: larger;
     letter-spacing: 1px;
-    min-width: 180px;
+    max-width: 180px;
     color: #000;
     background: none;
     cursor: pointer;
@@ -217,6 +218,49 @@ input:hover {
 .login-button:hover::before {
     transform: scaleX(1);
     border-radius: 10px;
+}
+
+.registerText {
+    position: fixed;
+    top: 35%;
+    left: 33%;
+    color: #fff;
+    cursor: default;
+    animation: gradient .5s infinite alternate;
+}
+
+.login {
+    position: fixed;
+    top: 49%;
+    left: 45%;
+    border-radius: 10px;
+    transition: all .4s ease-out;
+    font-family: cursive;
+    font-size: larger;
+    letter-spacing: 1px;
+    max-width: 180px;
+    color: rgb(108, 107, 107);
+    background: none;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 5px 80px rgb(14, 43, 79);
+    padding: 5px 60px;
+}
+
+.login:hover {
+    background: rgb(0, 0, 0);
+    color: #fff;
+}
+
+@keyframes gradient {
+    from {
+        color: #2799eb;
+    }
+
+    to {
+        color: #1f5074;
+    }
+
 }
 
 .hide {
@@ -273,13 +317,6 @@ input:hover {
     margin-bottom: 0.5rem;
 }
 
-@media only screen and (min-width: 320px) {
-    .contaIner {
-        width: 80vw;
-        height: 90vh;
-    }
-}
-
 @media only screen and (min-width: 360px) {
     .contaIner {
         width: 80vw;
@@ -287,31 +324,42 @@ input:hover {
     }
 }
 
-@media only screen and (min-width: 411px) {
+@media only screen and (min-width: 451px) {
     .contaIner {
         width: 80vw;
         height: 90vh;
+    }
+
+    .input-container {
+        max-width: 100%;
     }
 }
 
 @media only screen and (min-width: 768px) {
     .contaIner {
-        width: 80vw;
+        width: 60vw;
         height: 80vh;
     }
 }
 
 @media only screen and (min-width: 1024px) {
     .contaIner {
-        width: 70vw;
+        width: 50vw;
         height: 90vh;
     }
 
+    .input-container {
+        width: 30vw;
+    }
 }
 
 @media only screen and (min-width: 1280px) {
     .contaIner {
         width: 30vw;
         height: 80vh;
+    }
+
+    .input-container {
+        width: 20vw;
     }
 }

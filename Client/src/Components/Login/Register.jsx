@@ -86,8 +86,10 @@ function Register() {
 
   return (
     <>
-      {success ? (
-        <Link to="/login">Sign in</Link>
+      {success ? (<div>
+        <h1 className="registerText">Вы зарегистрировались успешно</h1>
+        <Link to="/login" className="login">Войти</Link>
+      </div>
       ) : (
         <section className="register-main">
           <div className="contaIner">

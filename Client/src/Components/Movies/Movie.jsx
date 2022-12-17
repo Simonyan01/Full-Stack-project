@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { IoIosArrowForward } from "@react-icons/all-files/io/IoIosArrowForward";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { IoIosArrowForward } from "@react-icons/all-files/io/IoIosArrowForward";
 import { movies } from "./data";
-// import Loading from "../Loading/Load";
 import "./Movie.css";
-import { Link } from "react-router-dom";
 
 function createImage() {
   const settings = {
@@ -124,7 +123,7 @@ function createImage() {
 }
 
 const Movie = () => {
-  const [getUserData, setUserData] = useState([]);
+  // const [getUserData, setUserData] = useState([]);
   const getData = async (e) => {
 
     //   const res = await fetch('http://localhost:8080/api/v1/movie', {
@@ -137,11 +136,11 @@ const Movie = () => {
     //   } else {
     //     console.log(data.message);
     //   }
-    // };
-    // useEffect(() => {
-    //   getData();
-    // }, []);
-  }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
       <div id="ivi">

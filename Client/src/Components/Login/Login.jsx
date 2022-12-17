@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef, useContext } from "react";
+import AuthContext from "./context/AuthProvider"
 import { Link } from "react-router-dom";
-import Main from "../../main";
+import 'animate.css';
 import "./Login.css";
 import "../../main";
-import AuthContext from "../../context/AuthProvider"
 
 const LOGIN_URL = 'http://localhost:8080/api/v1/auth/login';
 
@@ -45,19 +45,19 @@ function LoginPage() {
     })
     const res = await response.json()
     if (res.token) {
-     localStorage.setItem("token",res.token)
+      localStorage.setItem("token", res.token)
       setAuth(true)
       setUser(data);
       setSuccess(true);
-    } 
+    }
     errRef.current.focus();
   }
 
   return (
     <>
       {success ? <div>
-        <h1>Приятного просмотра</h1>
-        <Link to="/">Домой</Link>
+        <h1 className="loginText animate__animated animate__backInDown">Приятного просмотра</h1>
+        <Link to="/" className="login">Домой</Link>
       </div> : (
         <div className="login-main">
           <section className="container">
@@ -92,7 +92,6 @@ function LoginPage() {
               </div>
               <Link to="/register">
                 <h5 className="register-button">Регистрация</h5>
-                <hr />
               </Link>
             </form>
           </section>
