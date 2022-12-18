@@ -9,7 +9,7 @@ const configs = {
     JWT_SECRET: process.env.JWT_SECRET,
     EMAIL: process.env.EMAIL,
     EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
-    STRIPE_KEY: process.env.STRIPE_SECRET_KEY
+    SECRET_KEY: process.env.STRIPE_SECRET_KEY
 };
 
 Object.freeze(configs);

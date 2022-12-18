@@ -4,10 +4,13 @@ const AuthController = require('../controllers/auth');
 
 const router = express.Router();
 
-router.post('/sign-in', body('firstName').isString(),body('lastName').isString(), body('email').isEmail(), body('password').isLength({
+router.post('/sign-in', body('firstName').isString(), body('lastName').isString(), body('email').isEmail(), body('password').isLength({
     min: 4,
     max: 20
 }), AuthController.register);
-router.post('/login', AuthController.login);
+router.post('/login', body('email').isEmail(), body('password').isLength({
+    min: 4,
+    max: 20
+}), AuthController.login);
 
 module.exports = router;

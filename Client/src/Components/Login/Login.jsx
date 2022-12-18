@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef, useContext } from "react";
 import AuthContext from "./context/AuthProvider"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import 'animate.css';
 import "./Login.css";
 import "../../main";
@@ -13,7 +13,7 @@ function LoginPage() {
     email: "",
     password: "",
   }
-
+  const navigate = useNavigate();
   const userRef = useRef();
   const errRef = useRef();
 
@@ -40,63 +40,65 @@ function LoginPage() {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
       body: JSON.stringify(body),
 
     })
     const res = await response.json()
     if (res.token) {
-      localStorage.setItem("token", res.token)
       setAuth(true)
       setUser(data);
       setSuccess(true);
+      navigate("/")
+      localStorage.setItem("token", res.token)
     }
     errRef.current.focus();
   }
 
   return (
     <>
-      {success ? <div>
+      {/* {success ? <div>
         <h1 className="loginText animate__animated animate__backInDown">Приятного просмотра</h1>
         <Link to="/" className="login">Домой</Link>
-      </div> : (
-        <div className="login-main">
-          <section className="container">
-            <form onSubmit={handleSubmit} className="page">
-              <p ref={errRef} className={error ? "errmsg" : "offscreen"} aria-live="assertive">{error}</p>
-              <h2 className="other_text">Здравствуй</h2>
-              <div className="Input-container">
-                <input
-                  className="Input-email"
-                  id="email"
-                  ref={userRef}
-                  type="email"
-                  placeholder="Электронная почта"
-                  autoComplete="off"
-                  onChange={(e) => handleChange(e.target.value, "email")}
-                  value={user.email}
-                  required
-                />
-                <input
-                  className="Input-password"
-                  id="password"
-                  type="password"
-                  placeholder="Пароль"
-                  autoComplete="off"
-                  onChange={(e) => handleChange(e.target.value, "password")}
-                  value={user.password}
-                  required
-                />
-              </div>
-              <div className="button-contaIner">
-                <button className="login-btn">Войти</button>
-              </div>
-              <Link to="/register">
-                <h5 className="register-button">Регистрация</h5>
-              </Link>
-            </form>
-          </section>
-        </div>
-      )}
+      </div> : ( */}
+      <div className="login-main">
+        <section className="container">
+          <form onSubmit={handleSubmit} className="page">
+            <p ref={errRef} className={error ? "errmsg" : "offscreen"} aria-live="assertive">{error}</p>
+            <h2 className="other_text">Здравствуй</h2>
+            <div className="Input-container">
+              <input
+                className="Input-email"
+                id="email"
+                ref={userRef}
+                type="email"
+                placeholder="Электронная почта"
+                autoComplete="off"
+                onChange={(e) => handleChange(e.target.value, "email")}
+                value={user.email}
+                required
+              />
+              <input
+                className="Input-password"
+                id="password"
+                type="password"
+                placeholder="Пароль"
+                autoComplete="off"
+                onChange={(e) => handleChange(e.target.value, "password")}
+                value={user.password}
+                required
+              />
+            </div>
+            <div className="button-contaIner">
+              <button className="login-btn">Войти</button>
+            </div>
+            <Link to="/register">
+              <h5 className="register-button">Регистрация</h5>
+            </Link>
+          </form>
+        </section>
+      </div>
+      {/* )} */}
     </>
   );
 }
