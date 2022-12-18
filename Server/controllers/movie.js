@@ -9,7 +9,7 @@ class MovieController {
             const data = await MovieService.getAll();
             res.send(data).status(httpStatusCode.Ok);
         } catch (err) {
-            res.send(err.message).status(err.status);
+            res.status(err.status).send(err.message);
         }
     }
 
@@ -18,7 +18,7 @@ class MovieController {
             const data = await MovieService.create(req.body);
             res.send(data).status(httpStatusCode.CREATED);
         }catch (err) {
-            res.send(err.message).status(err.status);
+            res.status(err.status).send(err.message);
         }
     }
 
@@ -26,21 +26,20 @@ class MovieController {
         try {
             const data = await MovieService.getById(req.params.id)
             if (!data){
-                throw new HttpException(`movie by id ${req.params.id} dose not excist `,404)
+                throw new HttpException(`Movie by id ${req.params.id} does not exist `,404)
             }
             res.send(data).status(httpStatusCode.CREATED);
 
         }catch (err) {
-            res.send(err.message).status(err.status);
+            res.status(err.status).send(err.message);
         }
     }
     static async remove(req,res){
         try{
             await MovieService.remove(req.params.id)
-            res.status(200).send(`user by id ${req.params.id} deleted`)
+            res.status(200).send(`Movie by id ${req.params.id} deleted`)
         }catch (err){
-            console.log(err.status);
-            res.send(err.message).status(err.status);
+            res.status(err.status).send(err.message);
         }
     }
 }

@@ -8,14 +8,21 @@ const ApiError = require('../libs/errors/apiError');
 async function register(firstName, lastName, email, password, confirm) {
     const candidate = await User.findUserByEmail(email);
     if (candidate) {
-        throw  ApiError.BadRequestError(`User with ${email} address already exist`);
+        throw ApiError.BadRequestError(`User with ${email} address already exist`);
     }
     if (password !== confirm) {
-        throw  ApiError.BadRequestError(`Another password`);
+        throw ApiError.BadRequestError(`Another password`);
     }
-        const heshPassword = await bcrypt.hash(password, 5);
 
-    return User.create({firstName, lastName, email, password: heshPassword});
+    const heshPassword = await bcrypt.hash(password, 5);
+    
+    const user = await User.create({ firstName, lastName, email, password: heshPassword });
+    const userDto = new UserDto(user.dataValues);
+    const token = jwt.generateToken(userDto);
+
+    return {
+        ...token, user: userDto
+    };
 }
 
 

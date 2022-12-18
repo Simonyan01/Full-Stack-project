@@ -1,11 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import "./Header.css";
 import "../../main";
 
 const Header = () => {
   const [isMoblie, setIsMobile] = useState(false);
+  const navigate = useNavigate();
+
+  const isLogin = useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/")
+    }
+  }, [navigate]);
 
   const toggleHamburger = () => {
     setIsMobile(!isMoblie);
@@ -36,9 +44,13 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/login" className="log-btn">
-                Войти
-              </Link>
+              {isLogin ? <Link to="/logout"  className="log-btn">
+                Выйти
+              </Link> :
+                <Link to="/login" className="log-btn">
+                  Войти
+                </Link>
+              }
             </li>
           </ul>
           <div className="hamburger" onClick={toggleHamburger}>

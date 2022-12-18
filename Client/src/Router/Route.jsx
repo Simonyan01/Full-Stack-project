@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Main from "../main";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Register from "../Components/Login/Register";
 import Login from "../Components/Login/Login";
+import Logout from "../Components/Login/Logout"
 import Movies from "../Components/Search/movies";
 import Watch from "../Components/Movies/Watch/Watch"
 import StripeContainer from "../Components/Payment/StripeContainer";
@@ -18,9 +20,10 @@ function FullStack() {
         <Route exact path="/movies" element={<Movies />} />
         <Route exact path="movies/:id" element={<Watch />} />
         <Route exact path="/subscribe" element={<StripeContainer />} />
-        <Route exact path="subscribe/:complete" element={<Finality />} />
+        <Route exact path="/subscribe/:complete" element={<Finality />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
+        <Route exact path="/logout" element={<Logout />} />
       </Routes>
     </Router>
   );
