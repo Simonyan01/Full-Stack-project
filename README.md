@@ -53,6 +53,6 @@ For Server : `npm run start` or `nodemon app.js`
 
 - Click to see Front [App](https://github.com/Simonyan01/Full-Stack-Project/tree/main/Client)
 
-<p style="position:relative;left:130px;font-size:20px;">or</p>
+<p style="margin-left:20px;font-size:20px">or</p>
 
 - Click to see Back [App](https://github.com/Simonyan01/Full-Stack-Project/tree/main/Server)
