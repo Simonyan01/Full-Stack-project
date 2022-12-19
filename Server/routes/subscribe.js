@@ -3,5 +3,5 @@ const SubscribeController = require('../controllers/subscribe');
 
 const router = express.Router();
 
-router.post('/subscribe',SubscribeController.pay)
+router.post('/',SubscribeController.pay)
 module.exports=router

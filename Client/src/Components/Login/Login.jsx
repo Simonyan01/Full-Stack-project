@@ -14,6 +14,7 @@ function LoginPage() {
     password: "",
   }
   const navigate = useNavigate();
+  const [logout, setLogout] = useState(false);
   const userRef = useRef();
   const errRef = useRef();
 
@@ -26,6 +27,23 @@ function LoginPage() {
     setError('')
   }, [user, user.email, user.password]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/")
+    };
+  }, [navigate]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login")
+    };
+  }, [logout, navigate]);
+
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    setLogout(true);
+  };
   const { email, password } = user
   const handleChange = (value, key) => {
     setUser({ ...user, [key]: value })
@@ -57,48 +75,49 @@ function LoginPage() {
 
   return (
     <>
-      {/* {success ? <div>
+      {success ? <div>
         <h1 className="loginText animate__animated animate__backInDown">Приятного просмотра</h1>
         <Link to="/" className="login">Домой</Link>
-      </div> : ( */}
-      <div className="login-main">
-        <section className="container">
-          <form onSubmit={handleSubmit} className="page">
-            <p ref={errRef} className={error ? "errmsg" : "offscreen"} aria-live="assertive">{error}</p>
-            <h2 className="other_text">Здравствуй</h2>
-            <div className="Input-container">
-              <input
-                className="Input-email"
-                id="email"
-                ref={userRef}
-                type="email"
-                placeholder="Электронная почта"
-                autoComplete="off"
-                onChange={(e) => handleChange(e.target.value, "email")}
-                value={user.email}
-                required
-              />
-              <input
-                className="Input-password"
-                id="password"
-                type="password"
-                placeholder="Пароль"
-                autoComplete="off"
-                onChange={(e) => handleChange(e.target.value, "password")}
-                value={user.password}
-                required
-              />
-            </div>
-            <div className="button-contaIner">
-              <button className="login-btn">Войти</button>
-            </div>
-            <Link to="/register">
-              <h5 className="register-button">Регистрация</h5>
-            </Link>
-          </form>
-        </section>
-      </div>
-      {/* )} */}
+      </div> : (
+        <div className="login-main">
+          <section className="container">
+            <form onSubmit={handleSubmit} className="page">
+              <p ref={errRef} className={error ? "errmsg" : "offscreen"} aria-live="assertive">{error}</p>
+              <h2 className="other_text">Здравствуй</h2>
+              <div className="Input-container">
+                <input
+                  className="Input-email"
+                  id="email"
+                  ref={userRef}
+                  type="email"
+                  placeholder="Электронная почта"
+                  autoComplete="off"
+                  onChange={(e) => handleChange(e.target.value, "email")}
+                  value={user.email}
+                  required
+                />
+                <input
+                  className="Input-password"
+                  id="password"
+                  type="password"
+                  ref={userRef}
+                  placeholder="Пароль"
+                  autoComplete="off"
+                  onChange={(e) => handleChange(e.target.value, "password")}
+                  value={user.password}
+                  required
+                />
+              </div>
+              <div className="button-contaIner">
+                <button className="login-btn">Войти</button>
+              </div>
+              <Link to="/register">
+                <h5 className="register-button">Регистрация</h5>
+              </Link>
+            </form>
+          </section>
+        </div>
+      )}
     </>
   );
 }

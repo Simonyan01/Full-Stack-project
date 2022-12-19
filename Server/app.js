@@ -4,17 +4,17 @@ const sequelize = require('./db/connection');
 const PORT = configs.PORT || 8080;
 const errorMiddleware = require('./middlewares/error');
 const routes = require('./routes/index');
-const cors = require("cors");
-const ApiError = require('./libs/errors/apiError');
+const cors = require('cors')
 
 const app = express();
 
-app.use(cors())
 app.use(express.json());
 app.use(errorMiddleware);
+app.use(cors())
 
 //BASE URL
 app.use('/api/v1/', routes);
+
 
 async function start() {
     try {

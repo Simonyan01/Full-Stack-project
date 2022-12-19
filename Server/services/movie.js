@@ -5,7 +5,7 @@ class MovieService{
         return Movie.findAll()
     }
     static async create(payload){
-     await Movie.create(payload)
+     return Movie.create(payload)
     }
     static async getById(id){
       return Movie.findByPk(id)

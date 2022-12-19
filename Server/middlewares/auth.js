@@ -2,7 +2,7 @@ const jwt = require('../libs/jwt');
 const ApiError = require('../libs/errors/apiError');
 
 
-module.exports = function (req, next) {
+module.exports = function (req, res, next) {
     try {
 
         const {authorization} = req.headers;

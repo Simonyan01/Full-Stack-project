@@ -1,21 +1,21 @@
 const httpStatusCodes = require('../constants/http-Status-Codes');
 
 class ApiError extends Error {
-    statusCode;
+    status;
     errors;
 
-    constructor(statusCode, message) {
+    constructor(status, message) {
         super(message);
-        this.statusCode = statusCode;
+        this.status = status;
 
     }
 
     static UnauthorizedError() {
-        return new ApiError(httpStatusCodes.UNAUTHORIZED, 'User is not authorized');
+        return new ApiError(httpStatusCodes.UNAUTHORIZED, 'Doctor is not authorized');
     }
 
     static BadRequestError(message) {
-        return new ApiError (httpStatusCodes.BAD_REQUEST, message);
+        return new ApiError (httpStatusCodes.BAD_REQUEST,message);
     }
 }
 

@@ -6,10 +6,10 @@ class UserService {
     }
 
     static async updateUser(userId, name, surname, email, age) {
-        return User.update({ name, surname, email, age }, { returning: true, where: { id: userId } });
+        return User.update({name, surname, email, age}, {returning: true, where: {id: userId}});
     }
-    static async updateActive(id) {
-        return User.update({ active: true, active_time: new Date() }, { returning: true, where: { id } });
+    static async updateActive(id){
+        return User.update({active:true,active_time:new Date()}, {returning: true, where: {id}});
     }
 }
-module.exports = UserService
+module.exports=UserService

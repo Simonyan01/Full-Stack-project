@@ -7,9 +7,8 @@ const configs = {
     DB_PASSWORD: process.env.DB_PASSWORD,
     DB_PORT: process.env.DB_PORT,
     JWT_SECRET: process.env.JWT_SECRET,
-    EMAIL: process.env.EMAIL,
-    EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
-    SECRET_KEY: process.env.STRIPE_SECRET_KEY
+    PUBLIC_KEY:process.env.PUBLIC_KEY,
+    SECRET_KEY:process.env.SECRET_KEY
 };
 
 Object.freeze(configs);
