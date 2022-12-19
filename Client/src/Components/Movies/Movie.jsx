@@ -126,7 +126,7 @@ const Movie = () => {
   // const [getUserData, setUserData] = useState([]);
   const getData = async (e) => {
 
-    //   const res = await fetch('http://localhost:8080/api/v1/movie', {
+    //   const res = await fetch(MOVIE_URL, {
     //     method: 'GET',
     //     headers: { 'Content-Type': 'application/json' }
     //   });
