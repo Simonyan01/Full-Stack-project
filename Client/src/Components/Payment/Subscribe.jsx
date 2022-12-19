@@ -78,7 +78,7 @@ export default function Subscibe() {
             <div className='FormRow'>
               <CardElement
                 options={CARD_OPTIONS}
-                STRIPE_PUBLIC_KEY="pk_test_51MD0P0HTl6hKCtntLLQh99iPJGvf7GGMVPszwVFrJ7xRV60YwLPUJIekhqv3vjhVW44k2CgxtvBpd8oGR4OI3FNT00IvQBPMsT"
+                STRIPE_PUBLIC_KEY={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
               />
             </div>
           </fieldset>
