@@ -6,7 +6,7 @@ export const watchData = [
         img: "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/4db5c587-78c1-4ac0-ba93-adabc4d08a72/600x900",
         title: "Фильм Крик смотреть онлайн",
         date: "2022 г.",
-        age: "18+",
+        age: 18,
         country: "США •",
         genre: "Ужасы • Детективы • Зарубежные",
         duration: "1 ч. 49 мин.",

@@ -14,8 +14,9 @@ const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}/;
 function Register() {
 
   const userRef = useRef()
-
+  const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false)
+  const [focus, setFocus] = useState(false)
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -28,19 +29,22 @@ function Register() {
     setForm({ ...form, [key]: value })
   }
 
-  // const [validate, setValidate] = useState({
-  //   fname: false,
-  //   lname: false,
-  //   email: false,
-  //   pwd: false,
-  //   match: false
-  // })
+  const [validate, setValidate] = useState({
+    fname: false,
+    lname: false,
+    email: false,
+    pwd: false,
+    match: false
+  })
 
-  // // First name
-  // useEffect(() => {
-  //   const result = USER_REGEX.test(form.firstName)
-  //   setValidate(result)
-  // }, [form.firstName]);
+  const handleValidate = () => {
+    setValidate(true)
+  }
+  // First name
+  useEffect(() => {
+    const result = USER_REGEX.test(form.firstName)
+    handleValidate(result)
+  }, [form.firstName]);
   // // Last Name
   // useEffect(() => {
   //   const result = USER_REGEX.test(form.lastName)
@@ -59,6 +63,9 @@ function Register() {
   //   setValidate(match)
   // }, [form.password, form.confirm]);
 
+  useEffect(() => {
+    setErrMsg('');
+  }, [form.firstName])
   const [userData, setUserData] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -70,6 +77,7 @@ function Register() {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: true,
       body: JSON.stringify({
         ...form
       })
@@ -92,10 +100,13 @@ function Register() {
       </div>
       ) : (
         <section className="register-main">
+          <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           <div className="contaIner">
             <h2 className="text">Регистрация</h2>
             <form onSubmit={handleSubmit} id="page">
               <div className="input-container">
+                <FontAwesomeIcon icon={faCheck} className={validate.fname ? "valid" : "hide"} />
+                <FontAwesomeIcon icon={faTimes} className={validate.fname || !form.firstName ? "hide" : "invalid"} />
                 <input
                   className="input-username"
                   id="username"
@@ -104,7 +115,11 @@ function Register() {
                   placeholder="Имя"
                   autoComplete="off"
                   value={form.firstName}
+                  aria-invalid={validate.fname ? "true" : "false"}
                   onChange={(e) => handleChange(e.target.value, "firstName")}
+                  onFocus={() => setFocus(true)}
+                  onBlur={() => setFocus(false)}
+                  required
                 />
                 <input
                   className="input-lastname"

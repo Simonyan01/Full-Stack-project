@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import "./Header.css";
 import "../../main";
@@ -37,13 +37,9 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              {/* {isLogin ? <Link to="/logout"  className="log-btn">
-                Выйти
-              </Link> : */}
-                <Link to="/login" className="log-btn">
-                  Войти
-                </Link>
-              {/* } */}
+              <Link to="/login" className="log-btn">
+                Войти
+              </Link>
             </li>
           </ul>
           <div className="hamburger" onClick={toggleHamburger}>

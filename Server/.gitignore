@@ -1,5 +1,5 @@
-# dependencies
+.idea
 /node_modules
-
-# misc
+/package-lock.json
 .env
+/config/config.json

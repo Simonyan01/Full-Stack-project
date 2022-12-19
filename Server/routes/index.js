@@ -1,7 +1,7 @@
 const express = require('express');
 const AuthRoute = require('./auth');
-const MovieRoute = require('./movie')
-const SubscribeRoute = require('./subscribe')
+const MovieRoute=require('./movie')
+const SubscribeRoute=require('./subscribe')
 
 const router = express.Router();
 

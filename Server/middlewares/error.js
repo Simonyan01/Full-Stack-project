@@ -1,10 +1,10 @@
 const ApiError = require('../libs/errors/apiError');
 const httpStatusCodes = require('../libs/constants/http-Status-Codes');
 
-module.exports = function (err, res) {
+module.exports = function (err, req, res, next) {
 
     if (err instanceof ApiError) {
-        return res.status(err.statusCode).json({
+        return res.status(err.status).json({
             message: err.message, errors: err.errors
         });
     }
