@@ -7,12 +7,12 @@ class SubscribeController {
     static async pay(req, res) {
         try {
            await stripe.charges.create({
-                amount: 1,
+                amount: req.body.amount,
                 source: req.body.stripeTokenId,
-                currency: 'usd'
+                currency: 'USD'
             })
             await SubscribeService.pay();
-            res.json({massage:"successful charged"}).status(httpStatusCode.OK);
+            res.json({message:"successful charged"}).status(httpStatusCode.OK);
         } catch (err) {
             res.status(err.status).json({message: err.message});
         }

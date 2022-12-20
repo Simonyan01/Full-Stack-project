@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import Loading from "../Loading/Load";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "@react-icons/all-files/io/IoIosArrowForward";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { movies } from "./data";
+import { Data } from "./data";
 import "./Movie.css";
 
 function createImage() {
@@ -102,7 +103,7 @@ function createImage() {
   return (
     <>
       <Slider {...settings}>
-        {movies.map((item, key) => {
+        {Data.map((item, key) => {
           return <div key={key}>
             <div className="img-wrapper">
               <img src={item.img} className="movie blur" alt="Movie pictures" />
@@ -122,43 +123,52 @@ function createImage() {
   )
 }
 
+const MOVIE_URL = "http://localhost:8080/api/v1/movie"
+
 const Movie = () => {
   // const [getUserData, setUserData] = useState([]);
-  const getData = async (e) => {
+  const [loading, setLoading] = useState(true);
+  // const getData = async () => {
+  //   const myData = { Data }
+  //   const res = await fetch(MOVIE_URL, {
+  //     method: 'GET',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(myData),
+  //   })
 
-    //   const res = await fetch(MOVIE_URL, {
-    //     method: 'GET',
-    //     headers: { 'Content-Type': 'application/json' }
-    //   });
-    //   const data = await res.json();
-    //   if (res.status === 200) {
-    //     setUserData(data);
-    //   } else {
-    //     console.log(data.message);
-    //   }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  //   const data = await res.json();
+  //   if (res.status === 200) {
+  //     setUserData(data);
+  //   } else {
+  //     console.log(data.message);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   return (
     <>
-      <div id="ivi">
-        <a href="/movies" className="adviceText">
-          <span className="arrow" href="/"> Рекомендуем вам посмотреть<IoIosArrowForward /></span>
-        </a>
-        <Link to="/subscribe" className="subscribe">
-          <img
-            src="https://solea-central.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg"
-            alt="lightning"
-            className="lightningImage"
-          />
-          <span className="subscribeText"> 14 дней подписки за 1 $</span>
-        </Link>
-        <div className="movie-container">
-          {createImage()}
+      {loading ? (
+        <Loading loading={loading} setLoading={setLoading} />
+      ) : (
+        <div id="ivi">
+          <a href="/movies" className="adviceText">
+            <span className="arrow" href="/"> Рекомендуем вам посмотреть<IoIosArrowForward /></span>
+          </a>
+          <Link to="/subscribe" className="subscribe">
+            <img
+              src="https://solea-central.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg"
+              alt="lightning"
+              className="lightningImage"
+            />
+            <span className="subscribeText"> 14 дней подписки за 1 $</span>
+          </Link>
+          <div className="movie-container">
+            {createImage()}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

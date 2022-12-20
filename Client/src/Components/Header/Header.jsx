@@ -7,9 +7,15 @@ import "../../main";
 
 const Header = () => {
   const [isMoblie, setIsMobile] = useState(false);
+  const [logout, setLogout] = useState(false);
+  const success = localStorage.getItem("token")
 
   const toggleHamburger = () => {
     setIsMobile(!isMoblie);
+  };
+  const logoutHandler = (e) => {
+    localStorage.removeItem("token");
+    setLogout(true);
   };
 
   return (
@@ -37,9 +43,14 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/login" className="log-btn">
-                Войти
-              </Link>
+              {success ?
+                <Link to="/" onClick={logoutHandler} className="log-btn">
+                  Выйти
+                </Link> :
+                <Link to="/login" className="log-btn">
+                  Войти
+                </Link>
+              }
             </li>
           </ul>
           <div className="hamburger" onClick={toggleHamburger}>

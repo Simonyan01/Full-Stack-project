@@ -29,7 +29,7 @@ async function login(email, password) {
 
     const user = await User.findUserByEmail(email);
     if (!user) {
-        throw ApiError.BadRequestError(`user with this email ${email} not found`);
+        throw ApiError.BadRequestError(`User with this email ${email} not found`);
     }
 
     const isPasswordEquals = await bcrypt.compare(password, user.password);

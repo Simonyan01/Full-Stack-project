@@ -11,7 +11,7 @@ class ApiError extends Error {
     }
 
     static UnauthorizedError() {
-        return new ApiError(httpStatusCodes.UNAUTHORIZED, 'Doctor is not authorized');
+        return new ApiError(httpStatusCodes.UNAUTHORIZED, 'User is not authorized');
     }
 
     static BadRequestError(message) {

@@ -25,7 +25,7 @@ class MovieController {
         try {
             const data = await MovieService.getById(req.params.id)
             if (!data){
-                throw new HttpException(`movie by id ${req.params.id} dose not excist `,404)
+                throw new HttpException(`Movie by id ${req.params.id} does not exist `,404)
             }
 
             res.send(data).status(httpStatusCode.CREATED);
@@ -37,7 +37,7 @@ class MovieController {
     static async remove(req,res){
         try{
             await MovieService.remove(req.params.id)
-            res.status(200).send(`user by id ${req.params.id} deleted`)
+            res.status(200).send(`User by id ${req.params.id} deleted`)
         }catch (err){
             res.status(err.status).send(err.message);
         }

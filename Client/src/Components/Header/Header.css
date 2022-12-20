@@ -24,14 +24,14 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 4.3em;
+    min-height: 4.5em;
 }
 
 .nav-items {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    gap: 85px;
+    gap: 70px;
 }
 
 .film, .home {
@@ -81,7 +81,7 @@
 .watchSubscribe {
     position: relative;
     top: 0;
-    left: 65rem;
+    left: 60rem;
     padding: 0.5rem 1rem;
     border-radius: 12px;
     background: crimson;
