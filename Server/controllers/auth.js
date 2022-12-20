@@ -8,7 +8,7 @@ async function register(req, res, next) {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            throw ApiError.BadRequestError('validation error', errors.array());
+            throw ApiError.BadRequestError('Validation error', errors.array());
         }
 
         const {firstName,lastName, email, password,confirm} = req.body;

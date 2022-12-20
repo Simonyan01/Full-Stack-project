@@ -150,7 +150,7 @@ input:hover {
 .text {
     position: relative;
     left: 0.2rem;
-    top: 1.6rem;
+    top: 1rem;
     padding: 0.5rem 1rem;
     background: linear-gradient(to right, #0d3f63 0%, black 100%);
     border-radius: 4rem 1rem;
@@ -164,15 +164,14 @@ input:hover {
     font-weight: 700;
     font-size: 15px;
     left: 0;
-    top: 18.5rem;
+    top: 21.5rem;
     cursor: pointer;
     color: rgb(28, 26, 26);
 }
 
 .button-container {
     position: relative;
-    right: 0.5rem;
-    top: 17rem;
+    top: 19.5rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -185,7 +184,7 @@ input:hover {
     font-family: cursive;
     font-size: larger;
     letter-spacing: 1px;
-    max-width: 180px;
+    max-width: 320px;
     color: #000;
     background: none;
     cursor: pointer;
@@ -204,7 +203,7 @@ input:hover {
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 80%;
     height: 100%;
     background: #000;
     z-index: -1;
@@ -263,58 +262,148 @@ input:hover {
 
 }
 
+.instructions {
+    font-weight: 700;
+    font-size: 0.80rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    color: rgb(0, 0, 0);
+    position: relative;
+    right: 5rem;
+    top: 60px;
+    width: 60%;
+}
+
+.instructions-2 {
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    color: rgb(0, 0, 0);
+    position: relative;
+    right: 5rem;
+    top: 80px;
+    width: 55%;
+}
+
+.instructions-3 {
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    color: rgb(0, 0, 0);
+    position: relative;
+    right: 5rem;
+    line-height: 20px;
+    top: 110px;
+    width: 55%;
+}
+
+.instructions-4 {
+    letter-spacing: 4.5px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    color: rgb(0, 0, 0);
+    position: relative;
+    right: 5rem;
+    top: 132px;
+    width: 70%;
+}
+
+.instructions-5 {
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    color: rgb(0, 0, 0);
+    position: relative;
+    right: 5rem;
+    top: 165px;
+    width: 50%;
+}
+
+.icon {
+    margin-right: 7px;
+}
+
+.offscreen {
+    display: none;
+}
+
 .hide {
     display: none;
 }
 
 .valid {
     position: relative;
-    left: 12.2rem;
-    top: 5.2rem;
+    left: 12.5rem;
+    top: 5rem;
     color: limegreen;
 }
 
 .validTwo {
     position: relative;
-    left: 12.3rem;
-    top: 7.2rem;
+    left: 12.5rem;
+    top: 6.5rem;
     color: limegreen;
 }
 
 .validThree {
     position: relative;
-    left: 12.3rem;
-    top: 9.2rem;
+    left: 12.5rem;
+    top: 8rem;
+    color: limegreen;
+}
+
+.validFour {
+    position: relative;
+    left: 12.5rem;
+    top: 9.5rem;
+    color: limegreen;
+}
+
+.validFive {
+    position: relative;
+    left: 12.5rem;
+    top: 11rem;
     color: limegreen;
 }
 
 .invalid {
     position: relative;
-    left: 12.2rem;
-    top: 5.2rem;
+    left: 12.5rem;
+    top: 5rem;
     color: red;
 }
 
 .invalidTwo {
     position: relative;
-    left: 12.3rem;
-    top: 7.2rem;
+    left: 12.5rem;
+    top: 6.5rem;
     color: red;
 }
 
 .invalidThree {
     position: relative;
-    left: 12.3rem;
-    top: 9.2rem;
+    left: 12.5rem;
+    top: 8rem;
     color: red;
 }
 
-.errmsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+.invalidFour {
+    position: relative;
+    left: 12.5rem;
+    top: 9.5rem;
+    color: red;
+}
+
+.invalidFive {
+    position: relative;
+    left: 12.5rem;
+    top: 11rem;
+    color: red;
 }
 
 @media only screen and (min-width: 360px) {
@@ -360,6 +449,7 @@ input:hover {
     }
 
     .input-container {
+
         width: 20vw;
     }
 }

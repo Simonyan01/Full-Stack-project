@@ -1,4 +1,4 @@
-export const movies = [
+export const Data = [
     {
         id: 1,
         img: "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/4db5c587-78c1-4ac0-ba93-adabc4d08a72/300x450",

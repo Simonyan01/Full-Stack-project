@@ -103,7 +103,7 @@
     position: relative;
     top: 15rem;
     font-size: x-large;
-    transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all .3s ease-out;
 }
 
 .to-home:hover {
@@ -111,7 +111,7 @@
 }
 
 .hr {
-    width: 18%;
+    width: 25%;
     position: absolute;
     top: 2.5rem;
     left: 35rem;
