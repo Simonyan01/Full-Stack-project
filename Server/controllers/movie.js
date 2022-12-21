@@ -17,6 +17,7 @@ class MovieController {
             const data = await MovieService.create(req.body);
             res.send(data).status(httpStatusCode.CREATED);
         }catch (err) {
+            
             res.status(err.status).send(err.message);
         }
     }
