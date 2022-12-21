@@ -1,8 +1,5 @@
-.idea
-
 # dependencies
 node_modules
 
 #misc
 .env
-config/config.json

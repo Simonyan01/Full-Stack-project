@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Loading from "../Loading/Load";
-import { Link,useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IoIosArrowForward } from "@react-icons/all-files/io/IoIosArrowForward";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -124,28 +124,26 @@ function CreateImage() {
 }
 
 const MOVIE_URL = "http://localhost:8080/api/v1/movie"
-
+let data
 const Movie = () => {
-  // const [getUserData, setUserData] = useState([]);
+  const [getUserData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const getData = async () => {
-  //   const myData = { Data }
-  //   const res = await fetch(MOVIE_URL, {
-  //     method: 'GET',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(myData),
-  //   })
+  const getData = async () => {
+    const res = await fetch(MOVIE_URL, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
 
-  //   const data = await res.json();
-  //   if (res.status === 200) {
-  //     setUserData(data);
-  //   } else {
-  //     console.log(data.message);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+    data = await res.json();
+    if (res.status === 200) {
+      setUserData(data);
+    } else {
+      console.log(data.message);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
