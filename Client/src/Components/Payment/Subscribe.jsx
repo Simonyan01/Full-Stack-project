@@ -52,50 +52,48 @@ export default function Subscibe() {
 
     if (!error) {
       const { id } = paymentMethod;
-      //     const response = await fetch(SUBSCRIBE_URL, {
-      //       method: 'POST',
-      //       headers: { 'Content-Type': 'application/json' },
-      //       withCredentials: true,
-      //       body: JSON.stringify(
-      //         {
-      //           amount: 1000,
-      //           id
-      //         }
-      //       )
-      //     });
-      //     console.log(response);
-      //     if (response.data.success) {
-      //       console.log("Successful Payment");
-      //       setSuccess(response);
-      //     }
-      //   } else if (error.type === "card_error" || error.type === "validation_error") {
-      //     setMessage(error.message);
-      //   } else {
-      //     setMessage("Произошла непредвиденная ошибка.");
-      //   }
-      //   setIsProcessing(false);
+      const response = await fetch(SUBSCRIBE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+        body: JSON.stringify(
+          {
+            amount: 1000,
+            id
+          }
+        )
+      });
+      console.log(response);
+      if (response.data.success) {
+        console.log("Successful Payment");
+        setSuccess(response);
+      }
+    } else if (error.type === "card_error" || error.type === "validation_error") {
+      setMessage(error.message);
+    } else {
+      setMessage("Произошла непредвиденная ошибка.");
     }
-
-    return (
-      <>
-        {loading ? (
-          <Loading loading={loading} setLoading={setLoading} />
-        ) : success ?
-          <Finality /> : (
-            <form onSubmit={handleSubmit} className='card-container'>
-              <fieldset className='FormGroup'>
-                <div className='FormRow'>
-                  <CardElement
-                    options={CARD_OPTIONS}
-                    PUBLIC_KEY={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
-                  />
-                </div>
-              </fieldset>
-              <button disabled={!isProcessing || !stripe || !elements} className='button'> {isProcessing ? "Обработка..." : "Заплатить сейчас"}</button>
-              {message && <div id="payment-message">{message}</div>}
-            </form>
-          )}
-      </>
-    )
+    setIsProcessing(false);
   }
+
+  return (
+    <>
+      {loading ? (
+        <Loading loading={loading} setLoading={setLoading} />
+      ) : success ?
+        <Finality /> : (
+          <form onSubmit={handleSubmit} className='card-container'>
+            <fieldset className='FormGroup'>
+              <div className='FormRow'>
+                <CardElement
+                  options={CARD_OPTIONS}
+                />
+              </div>
+            </fieldset>
+            <button disabled={!isProcessing || !stripe || !elements} className='button'> {isProcessing ? "Обработка..." : "Заплатить сейчас"}</button>
+            {message && <div id="payment-message">{message}</div>}
+          </form>
+        )}
+    </>
+  )
 }

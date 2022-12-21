@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Loading from "./Components/Loading/Load";
 import ProductSwiper from "./Components/ProductSwiper/Swiper";
-import Movie from "./Components/Movies/Movie";
+import Movie from "./Components/Movies/Films";
 import "./main.css";
 
 function Main() {

@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Register from "../Components/Login/Register";
 import Login from "../Components/Login/Login";
-import Logout from "../Components/Login/Logout"
-import Movies from "../Components/Search/movies";
+import Movies from "../Components/Search/Movies";
 import Watch from "../Components/Movies/Watch/Watch"
 import StripeContainer from "../Components/Payment/StripeContainer";
 import Finality from "../Components/Payment/Finality";
@@ -22,7 +21,6 @@ function FullStack() {
         <Route exact path="/subscribe/:complete" element={<Finality />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/logout" element={<Logout />} />
       </Routes>
     </Router>
   );

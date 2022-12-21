@@ -7,7 +7,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 105vh;
+    height: 110vh;
     width: 100%;
     font-family: "Raleway", sans-serif;
 }
@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: 95vh;
+    min-height: 103vh;
     background: rgba(169, 169, 173, 0.779);
     box-shadow: 0 5px 65px rgba(133, 125, 125, 0.62);
     backdrop-filter: blur(4px);
@@ -329,7 +329,8 @@ input:hover {
 }
 
 .offscreen {
-    display: none;
+    position: absolute;
+    left: -9999px;
 }
 
 .hide {
