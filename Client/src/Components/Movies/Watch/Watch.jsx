@@ -21,7 +21,7 @@ const Watch = () => {
     const getData = async () => {
         const myData = { watchData }
         const res = await fetch(MOVIE_URL, {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -53,14 +53,14 @@ const Watch = () => {
                             <ul className='params-1'>
                                 <li className='item-date '>{selectedMovie.date}</li>
                                 <li className='item-duration '>{selectedMovie.duration}</li>
-                                <li className='item-age '>{selectedMovie.age}</li><br />
+                                <li className='item-age '>{selectedMovie.age}+</li><br />
                             </ul>
                             <ul className='params-2'>
                                 <li className='item-country '>{selectedMovie.country}</li>
                                 <li className='item-genre '>{selectedMovie.genre}</li>
                             </ul><br />
                             <span className='item-description'>{selectedMovie.description}</span><br /><br /><br /><br />
-                            <button className='item-button' onClick={() => setPopup(true)}>{selectedMovie.btnText}</button>
+                            <button className='item-button' onClick={() => setPopup(true)}>Смотреть Трейлер</button>
                             <Popup trigger={popup} setTrigger={setPopup}>
                                 <iframe
                                     className="frame"

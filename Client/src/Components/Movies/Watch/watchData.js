@@ -2,11 +2,10 @@ export const watchData = [
     {
         id: 1,
         link: "https://www.youtube.com/embed/WDDXdEP9YSM",
-        btnText: "Смотреть Трейлер",
         img: "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/4db5c587-78c1-4ac0-ba93-adabc4d08a72/600x900",
         title: "Фильм Крик смотреть онлайн",
         date: "2022 г.",
-        age: 8,
+        age: 18,
         country: "США •",
         genre: "Ужасы • Детективы • Зарубежные",
         duration: "1 ч. 49 мин.",
@@ -15,7 +14,6 @@ export const watchData = [
     {
         id: 2,
         link: "https://www.youtube.com/embed/S0bmhJ1cWjc",
-        btnText: "Смотреть Трейлер",
         img: "https://www.kino-teatr.ru/movie/poster/110890/75163.jpg",
         title: "Фильм Лучшее во мне смотреть онлайн",
         date: "2014 г.",
@@ -28,7 +26,6 @@ export const watchData = [
     {
         id: 3,
         link: "https://www.youtube.com/embed/HF1_epZNoCg",
-        btnText: "Смотреть Трейлер",
         img: "https://thumbs.dfs.ivi.ru/storage15/contents/3/2/e5cc77a404c050fd291bc3b6174ff9.jpg",
         title: "Фильм Тёмный рыцарь смотреть онлайн",
         date: "2008 г.",
@@ -41,7 +38,6 @@ export const watchData = [
     {
         id: 4,
         link: "https://www.youtube.com/embed/aNgP7LqI3ic",
-        btnText: "Смотреть Трейлер",
         img: "https://www.themoviedb.org/t/p/original/uotPtvanf2AOhAOPdvPnJVvDB1a.jpg",
         title: "Фильм Форсаж: Хоббс и Шоу смотреть онлайн",
         date: "2019 г.",
@@ -54,7 +50,6 @@ export const watchData = [
     {
         id: 5,
         link: "https://www.youtube.com/embed/hlANal2_tsc",
-        btnText: "Смотреть Трейлер",
         img: "https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/731c4031-7389-44f4-8c15-f9f4e3b0ed90/600x900",
         title: "Фильм Человек Паук:Нет пути домой смотреть онлайн",
         date: "2021 г.",
@@ -67,7 +62,6 @@ export const watchData = [
     {
         id: 6,
         link: "https://www.youtube.com/embed/4HFlPcX2HFo",
-        btnText: "Смотреть Трейлер",
         img: "https://upload.wikimedia.org/wikipedia/ru/4/4b/Avatar-2009.jpg",
         title: "Фильм Аватар смотреть онлайн",
         date: "2010 г.",
@@ -80,7 +74,6 @@ export const watchData = [
     {
         id: 7,
         link: "https://www.youtube.com/embed/qGpejFwCZS0",
-        btnText: "Смотреть Трейлер",
         img: "https://upload.wikimedia.org/wikipedia/ru/0/0c/Black_Panther_film_poster.jpg",
         title: "Фильм Чёрная Пантера смотреть онлайн",
         date: "2018 г.",
@@ -93,7 +86,6 @@ export const watchData = [
     {
         id: 8,
         link: "https://www.youtube.com/embed/PJX6a06gnEY",
-        btnText: "Смотреть Трейлер",
         img: "https://chardasuuraj.com/wp-content/uploads/2022/02/no-time-to-die-et00110039-29-09-2021-01-44-39.jpg",
         title: "Фильм Не время умирать смотреть онлайн",
         date: "2021 г.",
@@ -106,7 +98,6 @@ export const watchData = [
     {
         id: 9,
         link: "https://www.youtube.com/embed/85Zz1CCXyDI",
-        btnText: "Смотреть Трейлер",
         img: "https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/8ab9a119-dd74-44f0-baec-0629797483d7/600x900",
         title: "Фильм Начало смотреть онлайн",
         date: "2010 г.",
@@ -119,7 +110,6 @@ export const watchData = [
     {
         id: 10,
         link: "https://www.youtube.com/embed/ZhrvbOOm2kY",
-        btnText: "Смотреть Трейлер",
         img: "https://m.media-amazon.com/images/M/MV5BNmE5ZmE3OGItNTdlNC00YmMxLWEzNjctYzAwOGQ5ODg0OTI0XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
         title: "Фильм Звезда родилась смотреть онлайн",
         date: "2018 г.",
@@ -132,7 +122,6 @@ export const watchData = [
     {
         id: 11,
         link: "https://www.youtube.com/embed/lneNCBIXD4I",
-        btnText: "Смотреть Трейлер",
         img: "https://upload.wikimedia.org/wikipedia/ru/e/e4/La_La_Land.jpg",
         title: "Фильм Ла-Ла Ленд смотреть онлайн",
         date: "2016 г.",
@@ -145,7 +134,6 @@ export const watchData = [
     {
         id: 12,
         link: "https://www.youtube.com/embed/54izAMhnj0c",
-        btnText: "Смотреть Трейлер",
         img: "https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMC00MzlmLTg4MGItZWJmMzBhZjE0Mjc1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
         title: "Фильм Социальная сеть смотреть онлайн",
         date: "2010 г.",
@@ -158,7 +146,6 @@ export const watchData = [
     {
         id: 13,
         link: "https://www.youtube.com/embed/jblDp128BYw",
-        btnText: "Смотреть Трейлер",
         img: "https://m.media-amazon.com/images/M/MV5BMTg5NTg3ODA1OV5BMl5BanBnXkFtZTgwODgzNjk5NDM@._V1_.jpg",
         title: "Фильм Маленькие женщины смотреть онлайн",
         date: "2019 г.",
@@ -171,7 +158,6 @@ export const watchData = [
     {
         id: 14,
         link: "https://www.youtube.com/embed/IHIHj2ISPZ8",
-        btnText: "Смотреть Трейлер",
         img: "https://avatars.mds.yandex.net/get-kinopoisk-image/4486362/7c9b00eb-81c7-4cfa-997a-5c6b9886d5f0/300x450",
         title: "Фильм Затерянный город смотреть онлайн",
         date: "2022 г.",
@@ -184,7 +170,6 @@ export const watchData = [
     {
         id: 15,
         link: "https://www.youtube.com/embed/qFjyxJ21VJY",
-        btnText: "Смотреть Трейлер",
         img: "https://media.pathe.nl/nocropthumb/620x955/gfx_content/posters/titanic3dposter1b.jpg",
         title: "Фильм Титаник смотреть онлайн",
         date: "1997 г.",
@@ -197,7 +182,6 @@ export const watchData = [
     {
         id: 16,
         link: "https://www.youtube.com/embed/Dg-lN_rS5XA",
-        btnText: "Смотреть Трейлер",
         img: "https://upload.wikimedia.org/wikipedia/ru/1/19/%D0%9F%D0%BE%D1%81%D1%82%D0%B5%D1%80_%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%B0_%C2%AB%D0%90%D0%BB%D0%B0%D0%B4%D0%B4%D0%B8%D0%BD%C2%BB.jpg",
         title: "Фильм Аладдин смотреть онлайн",
         date: "2019 г.",

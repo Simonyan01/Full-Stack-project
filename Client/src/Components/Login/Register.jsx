@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -7,17 +8,16 @@ import "./Register.css";
 
 const REGISTER_URL = "http://localhost:8080/api/v1/auth/sign-in"
 
-const USER_REGEX = /^[a-zA-Zа-яА-Я][a-zа-яA-ZА-Я0-9-_]{3,23}$/;
+const USER_REGEX = /^[a-zA-Zа-яА-Я][a-zа-яA-ZА-Я0-9_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-zа-я])(?=.*[A-ZА-Я])(?=.*[0-9])(?=.*[!@#$%?&]).{8,24}/;
 const EMAIL_REGEX = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
 
 function Register() {
 
   const userRef = useRef()
-  const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false)
-  // const [focus, setFocus] = useState(false)
 
+  // Form with its function
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -29,6 +29,7 @@ function Register() {
     setForm({ ...form, [key]: value })
   }
 
+  // Validation with its function
   const [validate, setValidate] = useState({
     fname: false,
     lname: false,
@@ -37,36 +38,35 @@ function Register() {
     match: false
   })
 
-  // const handleValidate = () => {
-  //   setValidate(current => !current);
-  // }
+  const handleValidate = (result, key) => {
+    setValidate({ ...validate, [key]: result })
+  }
 
-  // First name
+  // Focus of field with its function
+  const [focus, setFocus] = useState({
+    fnameFocus: false,
+    lnameFocus: false,
+    emailFocus: false,
+    pwdFocus: false,
+    matchFocus: false
+  })
+
+  const handleFocus = (result, key) => {
+    setFocus({ ...focus, [key]: result })
+  }
+
   useEffect(() => {
-    const result = USER_REGEX.test(form.firstName)
-    setValidate(result)
-  }, [form.firstName]);
-  // Last Name
-  useEffect(() => {
-    const result = USER_REGEX.test(form.lastName)
-    setValidate(result)
-  }, [form.lastName]);
-  //Email
-  useEffect(() => {
-    const result = EMAIL_REGEX.test(form.email)
-    setValidate(result)
-  }, [form.email]);
-  // Password
-  useEffect(() => {
-    const result = PWD_REGEX.test(form.password)
-    setValidate(result)
+    // First name
+    handleValidate(USER_REGEX.test(form.firstName), "fname")
+    // Last name
+    handleValidate(USER_REGEX.test(form.lastName), "lname")
+    // Email
+    handleValidate(EMAIL_REGEX.test(form.email), "email")
+    // Password and confirm password
+    handleValidate(PWD_REGEX.test(form.password), "pwd")
     const match = form.password === form.confirm
-    setValidate(match)
-  }, [form.password, form.confirm]);
-
-  useEffect(() => {
-    setErrMsg('');
-  }, [form])
+    handleValidate(match, "match")
+  }, [form, form.firstName, form.lastName, form.email, form.password, form.confirm]);
 
   const [userData, setUserData] = useState([]);
 
@@ -102,7 +102,6 @@ function Register() {
         </div>
       ) : (
         <section className="register-main">
-          <p className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           <div className="contaIner">
             <h2 className="text">Регистрация</h2>
             <form onSubmit={handleSubmit} id="page">
@@ -112,15 +111,18 @@ function Register() {
                 <input
                   className="input-username"
                   type="text"
+                  name="fname"
                   ref={userRef}
                   placeholder="Имя"
-                  autoComplete="off"
                   value={form.firstName}
+                  aria-describedby="uidnote"
                   aria-invalid={validate.fname ? "false" : "true"}
                   onChange={(e) => handleChange(e.target.value, "firstName")}
+                  onFocus={() => handleFocus(true)}
+                  onBlur={() => handleFocus(false)}
                   required
                 />
-                <p className={validate.fname ? "instructions" : "offscreen"}>
+                <p id="uidnote" className={focus.fnameFocus && form.firstName && !validate.fname ? "instructions" : "offscreen"}>
                   <FontAwesomeIcon className="icon" icon={faInfoCircle} />
                   4 to 24 characters.<br />
                   Must begin with a letter.<br />
@@ -131,15 +133,15 @@ function Register() {
                 <input
                   className="input-lastname"
                   type="text"
+                  name="lname"
                   ref={userRef}
                   placeholder="Фамилия"
-                  autoComplete="off"
                   value={form.lastName}
                   aria-invalid={validate.lname ? "false" : "true"}
                   onChange={(e) => handleChange(e.target.value, "lastName")}
                   required
                 />
-                <p className={validate.lname ? "instructions-2" : "offscreen"}>
+                <p className={focus.lnameFocus && form.lastName && !validate.lname ? "instructions-2" : "offscreen"}>
                   <FontAwesomeIcon className="icon" icon={faInfoCircle} />
                   4 to 24 characters.<br />
                   Must begin with a letter.<br />
@@ -150,14 +152,15 @@ function Register() {
                 <input
                   className="input-email"
                   type="email"
+                  name="email"
                   ref={userRef}
                   placeholder="Электронная почта"
-                  autoComplete="off"
                   value={form.email}
                   aria-invalid={validate.email ? "false" : "true"}
                   onChange={(e) => handleChange(e.target.value, "email")}
+                  required
                 />
-                <p className={validate.email ? "instructions-3" : "offscreen"}>
+                <p className={focus.emailFocus && !validate.email ? "instructions-3" : "offscreen"}>
                   <FontAwesomeIcon className="icon" icon={faInfoCircle} />
                   Please enter a valid<br /> email address
                 </p>
@@ -166,13 +169,14 @@ function Register() {
                 <input
                   className="input-password"
                   type="password"
+                  name="pwd"
                   placeholder="Пароль"
-                  autoComplete="off"
                   value={form.password}
                   aria-invalid={validate.pwd ? "false" : "true"}
                   onChange={(e) => handleChange(e.target.value, "password")}
+                  required
                 />
-                <p className={validate.pwd ? "instructions-4" : "offscreen"}>
+                <p className={focus.pwdFocus && !validate.pwd ? "instructions-4" : "offscreen"}>
                   <FontAwesomeIcon className="icon" icon={faInfoCircle} />
                   8 to 24 characters.<br />
                   Must include uppercase and <br />lowercase letters, a number and<br /> a special character.<br />
@@ -183,19 +187,22 @@ function Register() {
                 <input
                   className="input-reset-pwd"
                   type="password"
+                  name="match"
                   placeholder="Потвердить пароль"
-                  autoComplete="off"
                   value={form.confirm}
                   aria-invalid={validate.match ? "false" : "true"}
                   onChange={(e) => handleChange(e.target.value, "confirm")}
+                  onFocus={() => handleFocus(true)}
+                  onBlur={() => handleFocus(false)}
+                  required
                 />
-                <p className={validate.match ? "instructions-5" : "offscreen"}>
+                <p className={focus.matchFocus && !validate.match ? "instructions-5" : "offscreen"}>
                   <FontAwesomeIcon className="icon" icon={faInfoCircle} />
                   Must match the first<br /> password input field .
                 </p>
               </div>
               <div className="button-container">
-                <button className="login-button">Зарегистрироваться</button>
+                <button  className="login-button">Зарегистрироваться</button>
               </div>
               <Link to="/login">
                 <h4 className="button-of-register">УЖЕ ЗАРЕГИСТРИРОВАН?</h4>

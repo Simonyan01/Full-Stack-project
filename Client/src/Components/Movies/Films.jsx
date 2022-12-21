@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Loading from "../Loading/Load";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import { IoIosArrowForward } from "@react-icons/all-files/io/IoIosArrowForward";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Data } from "./data";
-import "./Movie.css";
+import "./Films.css";
 
-function createImage() {
+function CreateImage() {
   const settings = {
     className: "settings",
     dots: true,
@@ -107,7 +107,7 @@ function createImage() {
           return <div key={key}>
             <div className="img-wrapper">
               <img src={item.img} className="movie blur" alt="Movie pictures" />
-              <Link to={`${item.id}`}>
+              <Link to={`/movies/${item.id}`}>
                 <div className="content fade">
                   {item.year} <br />
                   {item.category} <br />
@@ -154,7 +154,7 @@ const Movie = () => {
       ) : (
         <div id="ivi">
           <a href="/movies" className="adviceText">
-            <span className="arrow" href="/"> Рекомендуем вам посмотреть<IoIosArrowForward /></span>
+            <span className="arrow" > Рекомендуем вам посмотреть<IoIosArrowForward /></span>
           </a>
           <Link to="/subscribe" className="subscribe">
             <img
@@ -165,7 +165,7 @@ const Movie = () => {
             <span className="subscribeText"> 14 дней подписки за 1 $</span>
           </Link>
           <div className="movie-container">
-            {createImage()}
+            {CreateImage()}
           </div>
         </div>
       )}

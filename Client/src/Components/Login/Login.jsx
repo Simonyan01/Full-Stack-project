@@ -9,29 +9,19 @@ import "../../main";
 
 const LOGIN_URL = 'http://localhost:8080/api/v1/auth/login';
 
-function LoginPage() {
+function Login() {
   const data = {
     email: "",
     password: "",
   }
-  const navigate = useNavigate();
+
   const userRef = useRef();
-  const errRef = useRef();
   const [loading, setLoading] = useState(true);
   const { setAuth } = useContext(AuthContext)
   const [user, setUser] = useState(data);
-  const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
-
-  useEffect(() => {
-    setError('')
-  }, [user, user.email, user.password]);
-
-  // useEffect(() => {
-  //   if (!localStorage.getItem("token")) {
-  //   };
-  // }, [navigate]);
   const { email, password } = user
+
   const handleChange = (value, key) => {
     setUser({ ...user, [key]: value })
   }
@@ -60,9 +50,7 @@ function LoginPage() {
 
   return (
     <>
-      {loading ? (
-        <Loading loading={loading} setLoading={setLoading} />
-      ) :
+      {loading ? <Loading loading={loading} setLoading={setLoading} /> :
         success ? <div>
           <h1 className="loginText animate__animated animate__backInDown">Приятного просмотра</h1>
           <Link to="/movies" className="login_to_movies">Домой</Link>
@@ -109,4 +97,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Login;
