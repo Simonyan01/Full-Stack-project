@@ -1,6 +1,6 @@
 # _Full-Stack Movie app_
 
-#### This program is a Full-stack responsive movie website that includes subscription, <br/>authentication and authorization.User can see movie trailers and subscribe to watch
+#### This program is a Full-stack movie website that includes subscription, <br/>authentication and authorization.User can see movie trailers and subscribe to watch
 
 ---
 
