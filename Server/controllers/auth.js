@@ -1,4 +1,4 @@
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 const AuthService = require('../services/auth');
 const ApiError = require('../libs/errors/apiError');
 const httpStatusCode = require('../libs/constants/http-Status-Codes');
@@ -11,9 +11,9 @@ async function register(req, res, next) {
             throw ApiError.BadRequestError('Validation error', errors.array());
         }
 
-        const {firstName,lastName, email, password,confirm} = req.body;
-        const user=await AuthService.register(firstName,lastName ,email, password, confirm);
-        res.status(httpStatusCode.CREATED).json({...user});
+        const { firstName, lastName, email, password, confirm } = req.body;
+        const user = await AuthService.register(firstName, lastName, email, password, confirm);
+        res.status(httpStatusCode.CREATED).json({ ...user });
     } catch (err) {
         res.status(err.status).send(err.message);
     }
@@ -21,9 +21,9 @@ async function register(req, res, next) {
 
 async function login(req, res) {
     try {
-        const {email, password} = req.body;
+        const { email, password } = req.body;
         const user = await AuthService.login(email, password);
-        res.status(httpStatusCode.OK).json({...user});
+        res.status(httpStatusCode.OK).json({ ...user });
     } catch (err) {
         res.status(err.status).send(err.message);
     }

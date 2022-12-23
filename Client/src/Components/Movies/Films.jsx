@@ -9,6 +9,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { Data } from "./data";
 import "./Films.css";
 
+const MOVIE_URL = "http://localhost:8080/api/v1/movie"
+
 function CreateImage() {
   const settings = {
     className: "settings",
@@ -123,27 +125,26 @@ function CreateImage() {
   )
 }
 
-const MOVIE_URL = "http://localhost:8080/api/v1/movie"
 let data
 const Movie = () => {
   const [getUserData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const getData = async () => {
-    const res = await fetch(MOVIE_URL, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
+  // const getData = async () => {
+  //   const res = await fetch(MOVIE_URL, {
+  //     method: 'GET',
+  //     headers: { 'Content-Type': 'application/json' },
+  //   })
 
-    data = await res.json();
-    if (res.status === 200) {
-      setUserData(data);
-    } else {
-      console.log(data.message);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  //   data = await res.json();
+  //   if (res.status === 200) {
+  //     setUserData(data);
+  //   } else {
+  //     console.log(data.message);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   return (
     <>
