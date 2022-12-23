@@ -1,6 +1,6 @@
 # _Full-Stack Movie app_
 
-#### This program is a Full-stack movie website that includes subscription, <br/>authentication and authorization.User can see movie trailers and subscribe to watch
+#### This program is a Full-stack movie website that includes subscription, <br/>authentication and authorization. User can see movie trailers and subscribe to watch
 
 ---
 
@@ -19,15 +19,16 @@
 - _MySql Database_
 - _Stripe subscription_
 - _ORM Sequelize_
+- _Search_
 
 ### Built by
 
 - React.js
 - Node.js
 - Express.js
-- CSS
+- Pure CSS
 - Visual Studio Code
-- Postman
+- API Testing tools (Postman,insomnia,etc.)
 
 ## 🛠 Installation and Setup Instructions
 
@@ -47,9 +48,12 @@ npm install (if you need, add  --save  or --force)
 
 For Client : `npm start`
 
-For Server : `npm run start` or `nodemon app.js`
+For Server : `npm run start(dev)` or `nodemon app.js`
 
 ## _For more information_
+
+For testing application look at ```.env.example``` file.
+You will find what you need there
 
 - Click to see Front [App](https://github.com/Simonyan01/Full-Stack-Project/tree/main/Client)
 
