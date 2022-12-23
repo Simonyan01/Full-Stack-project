@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useRef } from "react";
 import Loading from "../Loading/Load";
-import AuthContext from "./context/AuthProvider"
-import { Link, useNavigate } from "react-router-dom";
-import 'animate.css';
+import useAuth from "./context/useAuth"
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import "../../main";
 
@@ -16,10 +15,13 @@ function Login() {
   }
 
   const userRef = useRef();
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.from?.pathname || "/"
+
   const [loading, setLoading] = useState(true);
-  const { setAuth } = useContext(AuthContext)
   const [user, setUser] = useState(data);
-  const [success, setSuccess] = useState(false)
+  const { setAuth } = useAuth()
   const { email, password } = user
 
   const handleChange = (value, key) => {
@@ -41,20 +43,17 @@ function Login() {
     })
     const res = await response.json()
     if (res.token) {
-      setAuth(true)
+      setAuth(res.token)
       setUser(data);
-      setSuccess(true);
+      navigate(from, { replace: true })
       localStorage.setItem("token", res.token)
     }
   }
 
   return (
     <>
-      {loading ? <Loading loading={loading} setLoading={setLoading} /> :
-        success ? <div>
-          <h1 className="loginText animate__animated animate__backInDown">Приятного просмотра</h1>
-          <Link to="/movies" className="login_to_movies">Домой</Link>
-        </div> : (
+      {
+        loading ? <Loading loading={loading} setLoading={setLoading} /> : (
           <div className="login-main">
             <section className="container">
               <form onSubmit={handleSubmit} className="page">

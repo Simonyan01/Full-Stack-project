@@ -225,7 +225,7 @@ input:hover {
     left: 33%;
     color: #fff;
     cursor: default;
-    animation: gradient .5s infinite alternate;
+    animation: gradient .5s alternate;
 }
 
 .login {

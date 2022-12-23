@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import { watchData } from "./watchData";
@@ -12,24 +13,22 @@ const Watch = () => {
     const [popup, setPopup] = useState(false);
     const [loading, setLoading] = useState(true);
     const [getUserData, setUserData] = useState([]);
+    const success = localStorage.getItem("token")
     const { id } = useParams()
 
     const selectedMovie = watchData.find((item) => {
         return item.id === +id
     })
-
+    let data
     const getData = async () => {
-        const myData = { watchData }
         const res = await fetch(MOVIE_URL, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-            withCredentials: true,
-            body: JSON.stringify(myData),
+            withCredentials: true
         })
-
-        const data = await res.json();
+        data = await res.json();
         if (res.status === 200) {
             console.log(data);
             setUserData(data);
