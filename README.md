@@ -53,8 +53,11 @@ For Server : `npm run start(dev)` or `nodemon app.js`
 ## _For more information_
 
 For testing application look at ```.env.example``` file.
-You will find what you need there
+You will find what you look for
 
 - Click to see Front [App](https://github.com/Simonyan01/Full-Stack-Project/tree/main/Client)
 
 - Click to see Back [App](https://github.com/Simonyan01/Full-Stack-Project/tree/main/Server)
+
+### Author
+```Simonyan01```
