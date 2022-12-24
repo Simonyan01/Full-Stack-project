@@ -22,7 +22,7 @@ function FullStack() {
           <Route path="/movies" element={<Movies />} />
           <Route path="movies/:id" element={<Watch />} />
           <Route path="/subscribe" element={<StripeContainer />} />
-          <Route path="/subscribe/:complete" element={<Finality />} />
+          <Route path="/subscribe/complete" element={<Finality />} />
         </Route>
       </Routes>
     </Router>

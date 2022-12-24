@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import Loading from '../Loading/Load';
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe, } from "@stripe/react-stripe-js";
 import Finality from "./Finality";
 import "./Subscribe.css"
+
+const SUBSCRIBE_URL = "http://localhost:8080/api/v1/subscribe";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -27,49 +29,49 @@ const CARD_OPTIONS = {
     }
   }
 }
-const SUBSCRIBE_URL = "http://localhost:8080/api/v1/subscribe"
 
-export default function Subscibe() {
+const Subscibe = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
   const [success, setSuccess] = useState(false)
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const SECRET_KEY = (process.env.REACT_APP_STRIPE_SECRET_KEY);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
-      return;
+      return
     }
     setIsProcessing(true);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
-    });
+    const { error, clientSecret } = await fetch(SUBSCRIBE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        paymentMethodType: 'card',
+        currency: 'USD',
+      })
+    }).then((res) => res.json());
+    if (error) {
+      return error.message
+    }
 
-    if (!error) {
-      const { id } = paymentMethod;
-      const response = await fetch(SUBSCRIBE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true,
-        body: JSON.stringify(
-          {
-            amount: 1000,
-            id
-          }
-        )
-      });
-      console.log(response);
-      if (response.data.success) {
-        console.log("Successful Payment");
-        setSuccess(response);
+    const { err } = await stripe.confirmCardPayment(
+      clientSecret, {
+      paymentMethod: {
+        type: "card",
+        card: elements.getElement(CardElement),
+      },
+      confirmParams: {
+        return_url: `${window.location.origin}/complete`,
       }
-    } else if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
+    })
+
+    if (err.type === "card_error" || err.type === "validation_error") {
+      setMessage(err.message);
     } else {
       setMessage("Произошла непредвиденная ошибка.");
     }
@@ -90,10 +92,12 @@ export default function Subscibe() {
                 />
               </div>
             </fieldset>
-            <button disabled={!isProcessing || !stripe || !elements} className='button'> {isProcessing ? "Обработка..." : "Заплатить сейчас"}</button>
+            <button disabled={isProcessing || !stripe || !elements} className='button'> {isProcessing ? "Обработка..." : "Заплатить сейчас"}</button>
             {message && <div id="payment-message">{message}</div>}
           </form>
         )}
     </>
   )
 }
+
+export default Subscibe
