@@ -60,6 +60,6 @@ You will find what you look for
 - Click to see Front [App](https://github.com/Simonyan01/Full-Stack-Project/tree/main/Client)
 
 - Click to see Back [App](https://github.com/Simonyan01/Full-Stack-Project/tree/main/Server)
-
+---
 ### Author
-```Simonyan01```
+[Simonyan01](https://github.com/Simonyan01)
