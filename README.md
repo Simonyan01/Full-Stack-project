@@ -16,19 +16,21 @@
 
 - _User registration and log in_
 - _Authentication via JWT_
-- _MySql Database_
 - _Stripe subscription_
-- _ORM Sequelize_
+- _Swiper Slider_
+- _Responsive (Important pages)_
 - _Search_
 
 ### Built by
 
 - React.js
+- Pure CSS
 - Node.js
 - Express.js
-- Pure CSS
+- MySql Database
+- ORM Sequelize
 - Visual Studio Code
-- API Testing tools (Postman,insomnia,etc.)
+- API Testing tool (Postman)
 
 ## 🛠 Installation and Setup Instructions
 
