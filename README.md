@@ -27,7 +27,7 @@
 - Pure CSS
 - Node.js
 - Express.js
-- MySql Database
+- MySQL Database
 - ORM Sequelize
 - Visual Studio Code
 - API Testing tool (Postman)
