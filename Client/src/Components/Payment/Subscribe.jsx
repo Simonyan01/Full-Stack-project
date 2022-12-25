@@ -37,7 +37,6 @@ const Subscibe = () => {
   const [success, setSuccess] = useState(false)
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(true);
-  // const SECRET_KEY = (process.env.REACT_APP_STRIPE_SECRET_KEY);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,31 +46,27 @@ const Subscibe = () => {
     }
     setIsProcessing(true);
 
-    const { error, clientSecret } = await fetch(SUBSCRIBE_URL, {
+    const { response, clientSecret } = await fetch(SUBSCRIBE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         paymentMethodType: 'card',
-        currency: 'USD',
+        currency: 'amd',
       })
-    }).then((res) => res.json());
-    if (error) {
-      return error.message
+    })
+    const res = await response.json()
+    if (res.status === 200) {
+      setSuccess(true)
     }
 
-    const { err } = await stripe.confirmCardPayment(
+    const { error } = await stripe.confirmCardPayment(
       clientSecret, {
       paymentMethod: {
-        type: "card",
         card: elements.getElement(CardElement),
-      },
-      confirmParams: {
-        return_url: `${window.location.origin}/complete`,
       }
     })
-
-    if (err.type === "card_error" || err.type === "validation_error") {
-      setMessage(err.message);
+    if (error.type === "card_error" || error.type === "validation_error") {
+      setMessage(error.message);
     } else {
       setMessage("Произошла непредвиденная ошибка.");
     }

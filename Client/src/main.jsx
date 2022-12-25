@@ -6,6 +6,7 @@ import "./main.css";
 
 function Main() {
   const [loading, setLoading] = useState(true);
+  
   return (
     <div>
       {loading ? (

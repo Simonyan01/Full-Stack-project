@@ -8,8 +8,8 @@ class SubscribeController {
         try {
             await stripe.charges.create({
                 amount: req.body.amount,
-                currency: "USD",
-                paymentMethodType: "pm_card_visa"
+                currency: req.body.currency,
+                source: req.body.tokenId
             })
             await SubscribeService.pay();
             res.json({ message: "Successful charged" }).status(httpStatusCode.OK);

@@ -1,5 +1,4 @@
-import React from "react";
-import Main from "../main";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Register from "../Components/Authentication/Register";
@@ -9,8 +8,19 @@ import Watch from "../Components/Movies/Watch/Watch"
 import RequireAuth from "../Components/Authentication/context/RequireAuth";
 import StripeContainer from "../Components/Payment/StripeContainer";
 import Finality from "../Components/Payment/Finality";
+import { loadStripe } from "@stripe/stripe-js";
+import Main from "../main";
 
 function FullStack() {
+
+  const [stripePromise, setStripePromise] = useState(null);
+
+  useEffect(() => {
+    fetch("/subscribe").then(async (res) => {
+      const { publishableKey } = await res.json();
+      setStripePromise(loadStripe(publishableKey));
+    });
+  }, []);
   return (
     <Router>
       <Header />
@@ -21,8 +31,8 @@ function FullStack() {
           <Route exact path="/" element={<Main />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="movies/:id" element={<Watch />} />
-          <Route path="/subscribe" element={<StripeContainer />} />
-          <Route path="/subscribe/complete" element={<Finality />} />
+          <Route path="/subscribe" element={<StripeContainer stripePromise={stripePromise} />} />
+          <Route path="/subscribe/complete" element={<Finality  />} />
         </Route>
       </Routes>
     </Router>
