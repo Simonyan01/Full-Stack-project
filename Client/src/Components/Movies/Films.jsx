@@ -12,6 +12,7 @@ import "./Films.css";
 const MOVIE_URL = "http://localhost:8080/api/v1/movie"
 
 function CreateImage() {
+  const success = localStorage.getItem("token")
   const settings = {
     className: "settings",
     dots: true,
@@ -109,7 +110,7 @@ function CreateImage() {
           return <div key={key}>
             <div className="img-wrapper">
               <img src={item.img} className="movie blur" alt="Movie pictures" />
-              <Link to={`/movies/${item.id}`}>
+              <Link to={success ? `/movies/${item.id}` : "/login"}>
                 <div className="content fade">
                   {item.year} <br />
                   {item.category} <br />
@@ -125,9 +126,9 @@ function CreateImage() {
   )
 }
 
-let data
 const Movie = () => {
-  const [getUserData, setUserData] = useState([]);
+  // const [getUserData, setUserData] = useState([]);
+  const success = localStorage.getItem("token")
   const [loading, setLoading] = useState(true);
   // const getData = async () => {
   //   const res = await fetch(MOVIE_URL, {
@@ -155,7 +156,7 @@ const Movie = () => {
           <a href="/movies" className="adviceText">
             <span className="arrow" > Рекомендуем вам посмотреть<IoIosArrowForward /></span>
           </a>
-          <Link to="/subscribe" className="subscribe">
+          <Link to={success ? '/subscribe' : '/login'} className="subscribe">
             <img
               src="https://solea-central.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg"
               alt="lightning"

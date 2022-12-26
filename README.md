@@ -41,7 +41,7 @@ cd Full-Stack-Project/Client
 
 npm install (if you need, add  --save  or --force)
 
---------------------------------------------------
+-------------------------------------------------
 
 cd Full-Stack-Project/Server
 

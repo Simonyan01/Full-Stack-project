@@ -52,53 +52,53 @@ const Subscibe = () => {
     });
 
     const payload = await stripe.confirmCardPayment(
-       {
-      paymentMethod: {
-        card: elements.getElement(CardElement),
-      },
-      confirmParams: {
-        return_url: `${window.location.origin}/complete`
-      }
-    })
-    if (!err) {
-      const { response } = await fetch(SUBSCRIBE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount:1000
-        })
+      {
+        paymentMethod: {
+          card: elements.getElement(CardElement),
+        },
+        confirmParams: {
+          return_url: `${window.location.origin}/complete`
+        }
       })
-      const res = await response.json()
-      if (res.status === 200) {
-        setSuccess(true)
-      } else if (err.type === "card_error" || err.type === "validation_error") {
-        setMessage(err.message);
-      } else {
-        setMessage("Произошла непредвиденная ошибка.");
-      }
-    }
+    // if (!err) {
+    //   const { response } = await fetch(SUBSCRIBE_URL, {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //       amount: 1000
+    //     })
+    //   })
+    //   const res = await response.json()
+    //   if (res.status === 200) {
+    //     setSuccess(true)
+    //   } else if (err.type === "card_error" || err.type === "validation_error") {
+    //     setMessage(err.message);
+    //   } else {
+    //     setMessage("Произошла непредвиденная ошибка.");
+    //   }
+    // }
 
     setIsProcessing(false);
   }
 
   return (
     <>
-      {/* {loading ? (
+      {loading ?
         <Loading loading={loading} setLoading={setLoading} />
-      )*/} {success ?
-        <Finality /> : (
-          <form onSubmit={handleSubmit} className='card-container'>
-            <fieldset className='FormGroup'>
-              <div className='FormRow'>
-                <CardElement
-                  options={CARD_OPTIONS}
-                />
-              </div>
-            </fieldset>
-            <button disabled={isProcessing || !stripe || !elements} className='button'> {isProcessing ? "Обработка..." : "Заплатить сейчас"}</button>
-            {message && <div id="payment-message">{message}</div>}
-          </form>
-        )}
+        : success ?
+          <Finality /> : (
+            <form onSubmit={handleSubmit} className='card-container'>
+              <fieldset className='FormGroup'>
+                <div className='FormRow'>
+                  <CardElement
+                    options={CARD_OPTIONS}
+                  />
+                </div>
+              </fieldset>
+              <button disabled={isProcessing || !stripe || !elements} className='button'> {isProcessing ? "Обработка..." : "Заплатить сейчас"}</button>
+              {message && <div id="payment-message">{message}</div>}
+            </form>
+          )}
     </>
   )
 }

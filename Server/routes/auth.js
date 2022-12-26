@@ -4,9 +4,15 @@ const AuthController = require('../controllers/auth');
 
 const router = express.Router();
 
-router.post('/sign-in', body('firstName').isString(), body('lastName').isString(), body('email').isEmail(), body('password').matches(/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{8,20}$/),
-    AuthController.register);
-router.post('/login', body('email').isEmail(), body('password').matches(/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{8,20}$/),
-    AuthController.login);
+router.post('/sign-in', body('firstName').isString(), body('lastName').isString(), body('email').isEmail(), body('password').isLength({
+    min: 8,
+    max: 24
+}), AuthController.register);
+router.post('/login', body('email').isEmail(), body('password').isLength({
+    min: 8,
+    max: 24
+}), AuthController.login);
+
+
 
 module.exports = router;
