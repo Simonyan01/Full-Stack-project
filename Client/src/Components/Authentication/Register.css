@@ -222,10 +222,16 @@ input:hover {
 .registerText {
     position: fixed;
     top: 35%;
-    left: 33%;
+    left: 32%;
     color: #fff;
     cursor: default;
-    animation: gradient .5s alternate;
+    animation: backInDown 2s alternate;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    cursor: default;
+    background: -webkit-linear-gradient(#1A2980 0%, #26D0CE 50%, #1A2980 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .login {
@@ -249,17 +255,6 @@ input:hover {
 .login:hover {
     background: rgb(0, 0, 0);
     color: #fff;
-}
-
-@keyframes gradient {
-    from {
-        color: #2799eb;
-    }
-
-    to {
-        color: #1f5074;
-    }
-
 }
 
 .instructions {
@@ -430,6 +425,11 @@ input:hover {
         width: 60vw;
         height: 80vh;
     }
+
+    .registerText {
+        position: fixed;
+        left: 17rem;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -441,6 +441,7 @@ input:hover {
     .input-container {
         width: 30vw;
     }
+
 }
 
 @media only screen and (min-width: 1280px) {
@@ -450,7 +451,6 @@ input:hover {
     }
 
     .input-container {
-
         width: 20vw;
     }
 }

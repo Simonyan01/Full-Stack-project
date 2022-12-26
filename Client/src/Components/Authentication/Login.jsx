@@ -39,7 +39,6 @@ function Login() {
       },
       withCredentials: true,
       body: JSON.stringify(body),
-
     })
     const res = await response.json()
     if (res.token) {
