@@ -6,9 +6,9 @@ class MovieController {
     static async getAll(req, res) {
         try {
             const data = await MovieService.getAll();
-            res.send(data).status(httpStatusCode.Ok);
-        } catch (err) {
-            res.status(err.status).send(err.message);
+            res.send(data).status(httpStatusCode.OK);
+        } catch (err) { 
+            res.status(httpStatusCode.BAD_REQUEST).send(err.message);
         }
     }
 

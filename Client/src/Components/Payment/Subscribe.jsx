@@ -46,38 +46,46 @@ const Subscibe = () => {
     }
     setIsProcessing(true);
 
-    const { response, clientSecret } = await fetch(SUBSCRIBE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        paymentMethodType: 'card',
-        currency: 'amd',
-      })
-    })
-    const res = await response.json()
-    if (res.status === 200) {
-      setSuccess(true)
-    }
+    const { err } = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement),
+    });
 
-    const { error } = await stripe.confirmCardPayment(
-      clientSecret, {
+    const payload = await stripe.confirmCardPayment(
+       {
       paymentMethod: {
         card: elements.getElement(CardElement),
+      },
+      confirmParams: {
+        return_url: `${window.location.origin}/complete`
       }
     })
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("Произошла непредвиденная ошибка.");
+    if (!err) {
+      const { response } = await fetch(SUBSCRIBE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount:1000
+        })
+      })
+      const res = await response.json()
+      if (res.status === 200) {
+        setSuccess(true)
+      } else if (err.type === "card_error" || err.type === "validation_error") {
+        setMessage(err.message);
+      } else {
+        setMessage("Произошла непредвиденная ошибка.");
+      }
     }
+
     setIsProcessing(false);
   }
 
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <Loading loading={loading} setLoading={setLoading} />
-      ) : success ?
+      )*/} {success ?
         <Finality /> : (
           <form onSubmit={handleSubmit} className='card-container'>
             <fieldset className='FormGroup'>
