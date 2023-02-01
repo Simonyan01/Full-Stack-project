@@ -97,7 +97,7 @@ function Register() {
   return (
     <>
       {loading ? <Loading loading={loading} setLoading={setLoading} /> :
-        !success ?
+        success ?
           <div>
             <h1 className="registerText animate__animated animate__backInDown">Вы зарегистрировались успешно</h1>
             <Link to="/login" className="login">Войти</Link>
